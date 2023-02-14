@@ -1,7 +1,6 @@
 public class Lounge {
 
 	private Passenger[][] passengers;
-	private LoungeClasses classification;
 	private Lounge successor;
 
 	/**

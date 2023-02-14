@@ -1,3 +1,6 @@
+import java.util.ArrayList;
+import java.util.HashMap;
+
 public class Display {
 
 	private HashMap<String, Integer> departures;
