@@ -3,24 +3,23 @@ import java.util.HashMap;
 
 public class Display {
 
-	private HashMap<String, Integer> departures;
+	private HashMap<String, Integer> departures = new HashMap<String, Integer>();
 	private ArrayList<IDisplayListener> listeners;
 
+	public Display(ArrayList<IDisplayListener> listeners) {
+		listeners = new ArrayList<>();
+	}
 
 	public void addListener(IDisplayListener listener) {
-		// TODO - implement Display.addListener
-		throw new UnsupportedOperationException();
+		listeners.add(listener);
 	}
-
 
 	public void removeListener(IDisplayListener listener) {
-		// TODO - implement Display.removeListener
-		throw new UnsupportedOperationException();
+		listeners.remove(listener);
 	}
-
 	public void updatedDisplay() {
-		// TODO - implement Display.updatedDisplay
-		throw new UnsupportedOperationException();
+		for(IDisplayListener listener:listeners){
+			listener.updateEvent();
+		}
 	}
-
 }
