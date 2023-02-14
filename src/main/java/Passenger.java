@@ -1,6 +1,8 @@
 public class Passenger implements IDisplayListener {
-	int id;
+	private int id;
 	private IFTPState state;
+
+	private DrivingLog drivingLog;
 
 	public IFTPState getState() {
 		return state;
@@ -8,6 +10,10 @@ public class Passenger implements IDisplayListener {
 
 	public void setState(IFTPState state) {
 		this.state = state;
+	}
+
+	public int getId() {
+		return id;
 	}
 
 	public void promote(){
