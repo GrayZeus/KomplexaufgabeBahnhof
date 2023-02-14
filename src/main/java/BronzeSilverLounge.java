@@ -1,12 +1,14 @@
 public class BronzeSilverLounge extends Lounge {
 
-	/**
-	 * 
-	 * @param passenger
-	 */
-	public void assign(Passenger passenger) {
-		// TODO - implement BronzeSilverLounge.assign
-		throw new UnsupportedOperationException();
+	public BronzeSilverLounge(Lounge successor) {
+		setSuccessor(successor);
 	}
 
+	public void assign(Passenger passenger) {
+		if(canHandlePassenger(passenger,"Bronze") || canHandlePassenger(passenger,"Silver") ){
+			System.out.println("Passenger matches to BronzeSilver Lounge");
+		}else{
+			super.assign(passenger);
+		}
+	}//end method
 }
