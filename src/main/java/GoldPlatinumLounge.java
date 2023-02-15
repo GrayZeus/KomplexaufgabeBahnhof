@@ -6,8 +6,9 @@ public class GoldPlatinumLounge extends Lounge {
 	}
 
 	public void assign(Passenger passenger) {
-		if(canHandlePassenger(passenger,"Gold") || canHandlePassenger(passenger,"Platinum") ){
-			System.out.println("Passenger matches to GoldPlatinum Lounge");
+		if(canHandlePassenger(passenger,"Gold") || canHandlePassenger(passenger,"Plat") ){
+			//only first 4 chars possible
+			System.out.println("Passenger matches to GoldPlatinum Lounge. Source: assign, GoldPlatinumLounge");
 		}else{
 			super.assign(passenger);
 		}

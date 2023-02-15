@@ -5,7 +5,8 @@ public class BlueLounge extends Lounge {
 
 	public void assign(Passenger passenger) {
 		if(canHandlePassenger(passenger,"Blue")){
-			System.out.println("Passenger matches to Blue Lounge");
+			//only first 4 chars possible
+			System.out.println("Passenger matches to Blue Lounge. Source: assign , BlueLounge");
 
 			// maybe more CODE
 		}else{

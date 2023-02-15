@@ -12,7 +12,8 @@ public class Lounge {
 	}
 
 	public boolean canHandlePassenger(Passenger passenger, String passengerType) {
-		return (passenger == null) || (passenger.getState().toString().equals(passengerType));
+		//System.out.println("canHandlePassenger method from class Lounge: " + passenger.getState().toString().substring(0,4));
+		return (passenger == null) || (passenger.getState().toString().substring(0,4).equals(passengerType));
 	}
 
 	public void assign(Passenger passenger) {

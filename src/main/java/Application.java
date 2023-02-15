@@ -10,6 +10,8 @@ public class Application {
         //trainStation.outputChoosedPassengers();
 
         trainStation.startDailyBusiness();
+
+        trainStation.moveCustomAmountOfPassengersToLounges(1000,2000);
         //trainStation.outputCompletedConfiguredPassengers();
 
 

@@ -40,7 +40,6 @@ public class TrainStation {
 		bronzeSilverLounge = new BronzeSilverLounge(blueLounge);
 		goldPlatinLounge = new GoldPlatinumLounge(bronzeSilverLounge);
 
-
 		//Setting distances to other cities
 		distances.put("XA",125);
 		distances.put("XB",225);
@@ -52,7 +51,19 @@ public class TrainStation {
 		distances.put("XH",250);
 		distances.put("XI",115);
 		distances.put("XJ",200);
-	}
+	}//end constructor
+
+
+	public void moveCustomAmountOfPassengersToLounges(int startValue, int endValue){
+		for(int i = startValue ; i < endValue ; i++){
+			//using CoR
+			//System.out.println("Passenger: " + completedConfiguredPassengers.get(i).getId() + " is assigned to the lounge corresponding to the state");
+			//System.out.println("he will drive to: " + completedConfiguredPassengers.get(i).getDestination() + " SOURCE: moveCustomAmountOfPassengersToLounges, TrainStation");
+			goldPlatinLounge.assign(completedConfiguredPassengers.get(i));
+		}//end for
+	}//end method
+
+
 
 	public void startDailyBusiness(){
 		for(int i = 0 ; i < 10 ; i++){
@@ -63,11 +74,60 @@ public class TrainStation {
 			}
 		}
 		System.out.println("ArrayList size: " + completedConfiguredPassengers.size());
+		assignConfiguredPassengersToTrains();
 	}
 
-
 	public void assignConfiguredPassengersToTrains(){
-
+		//XA
+		for(int i = 0 ; i < 500 ; i++){
+			completedConfiguredPassengers.get(i).setDestination("XA");
+		}//end for
+		System.out.println("XA train full");
+		//XB
+		for(int i = 500 ; i < 1000 ; i++){
+			completedConfiguredPassengers.get(i).setDestination("XB");
+		}//end for
+		System.out.println("XB train full");
+		//XC
+		for(int i = 1000 ; i < 1500 ; i++){
+			completedConfiguredPassengers.get(i).setDestination("XC");
+		}//end for
+		System.out.println("XC train full");
+		//XD
+		for(int i = 1500 ; i < 2000 ; i++){
+			completedConfiguredPassengers.get(i).setDestination("XD");
+		}//end for
+		System.out.println("XD train full");
+		//XE
+		for(int i = 2000 ; i < 2500 ; i++){
+			completedConfiguredPassengers.get(i).setDestination("XE");
+		}//end for
+		System.out.println("XE train full");
+		//XF
+		for(int i = 2500 ; i < 3000 ; i++){
+			completedConfiguredPassengers.get(i).setDestination("XF");
+		}//end for
+		System.out.println("XF train full");
+		//XG
+		for(int i = 3000 ; i < 3500 ; i++){
+			completedConfiguredPassengers.get(i).setDestination("XG");
+		}//end for
+		System.out.println("XG train full");
+		//XH
+		for(int i = 3500 ; i < 4000 ; i++){
+			completedConfiguredPassengers.get(i).setDestination("XH");
+		}//end for
+		System.out.println("XH train full");
+		//XI
+		for(int i = 4000 ; i < 4500 ; i++){
+			completedConfiguredPassengers.get(i).setDestination("XI");
+		}//end for
+		System.out.println("XI train full");
+		//XJ
+		for(int i = 4500 ; i < 5000 ; i++){
+			completedConfiguredPassengers.get(i).setDestination("XJ");
+		}//end for
+		System.out.println("XJ train full");
 	}
 
 

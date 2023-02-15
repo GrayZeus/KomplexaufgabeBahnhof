@@ -7,7 +7,17 @@ public class Passenger implements IDisplayListener {
 
 	private TravelClass travelClass;
 
+	private String destination;
+
 	private DrivingLog drivingLog = new DrivingLog();
+
+	public String getDestination() {
+		return destination;
+	}
+
+	public void setDestination(String destination) {
+		this.destination = destination;
+	}
 
 	public IFTPState getState() {
 		return state;
