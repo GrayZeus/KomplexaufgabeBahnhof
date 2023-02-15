@@ -1,4 +1,6 @@
 public class BronzeSilverLounge extends Lounge {
+	private Passenger[][] passengers = new Passenger[25][100];
+	private Display display = new Display();
 
 	public BronzeSilverLounge(Lounge successor) {
 		setSuccessor(successor);

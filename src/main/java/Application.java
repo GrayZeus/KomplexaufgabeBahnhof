@@ -4,7 +4,31 @@ public class Application {
 
     public static void main(String... args){
         TrainStation trainStation = new TrainStation();
-        Repository repository = new Repository();
+
+        //trainStation.chooseRandomPassengers();
+
+        //trainStation.outputChoosedPassengers();
+
+        trainStation.startDailyBusiness();
+        //trainStation.outputCompletedConfiguredPassengers();
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+        /*Repository repository = new Repository();
 
         Passenger[] tempPassengers = repository.getPassengers();
         tempPassengers[3000].recordJourney(new Date(), "XA",5000);
@@ -14,5 +38,11 @@ public class Application {
 
         tempPassengers = repository.getPassengers();
         System.out.println(tempPassengers[3000].getPointsFromDrivingLog());
+         */
+
+
+
+
+
     }//end main
 }

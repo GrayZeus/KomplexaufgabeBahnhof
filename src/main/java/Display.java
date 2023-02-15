@@ -6,7 +6,7 @@ public class Display {
 	private HashMap<String, Integer> departures = new HashMap<String, Integer>();
 	private ArrayList<IDisplayListener> listeners;
 
-	public Display(ArrayList<IDisplayListener> listeners) {
+	public Display() {
 		listeners = new ArrayList<>();
 	}
 
@@ -21,5 +21,11 @@ public class Display {
 		for(IDisplayListener listener:listeners){
 			listener.updateEvent();
 		}
+	}
+
+	public String presentInformation(City city, Track track){
+		System.out.println("Train to " + city + " today from Track " + track +".");
+		updatedDisplay();
+		return city.getId().toString()+track.getId().toString();
 	}
 }

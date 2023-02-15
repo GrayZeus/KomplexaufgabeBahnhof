@@ -1,5 +1,6 @@
 public class GoldPlatinumLounge extends Lounge {
-
+	private Passenger[][] passengers = new Passenger[25][100];
+	private Display display = new Display();
 	public GoldPlatinumLounge(Lounge successor) {
 		setSuccessor(successor);
 	}
@@ -11,4 +12,6 @@ public class GoldPlatinumLounge extends Lounge {
 			super.assign(passenger);
 		}
 	}//end method
+
+
 }

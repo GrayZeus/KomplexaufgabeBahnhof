@@ -31,6 +31,14 @@ public class Passenger implements IDisplayListener {
 		this.id = id;
 	}
 
+	public TravelClass getTravelClass() {
+		return travelClass;
+	}
+
+	public void setTravelClass(TravelClass travelClass) {
+		this.travelClass = travelClass;
+	}
+
 	@Override
 	public void updateEvent() {
 		System.out.println("Updated event on Lounge Display");

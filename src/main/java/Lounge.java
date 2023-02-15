@@ -1,7 +1,7 @@
 public class Lounge {
-	private Passenger[][] passengers = new Passenger[25][100];
-	private Lounge successor;
+	private Passenger[][] passengers;
 	private Display display;
+	private Lounge successor;
 
 	public Lounge getSuccessor() {
 		return successor;
@@ -21,6 +21,10 @@ public class Lounge {
 		}else{
 			System.out.println("Unable to find correct passenger State: " + passenger.toString());
 		}
+	}
+
+	public void addDisplayListener(IDisplayListener listener){
+		display.addListener(listener);
 	}
 
 }
