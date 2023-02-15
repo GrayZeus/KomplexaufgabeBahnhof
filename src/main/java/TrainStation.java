@@ -33,4 +33,6 @@ public class TrainStation {
 		distances.put("XI",115);
 		distances.put("XJ",200);
 	}
+
+
 }
