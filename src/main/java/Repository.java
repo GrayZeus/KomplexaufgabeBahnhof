@@ -7,4 +7,12 @@ public class Repository {
 		}
 		//System.out.println(passengers[4999].getId());
 	}
+
+	public Passenger[] getPassengers() {
+		return passengers;
+	}
+
+	public void setPassengers(Passenger[] passengers) {
+		this.passengers = passengers;
+	}
 }
