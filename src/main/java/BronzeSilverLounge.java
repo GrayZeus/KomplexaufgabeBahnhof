@@ -6,12 +6,17 @@ public class BronzeSilverLounge extends Lounge {
 		setSuccessor(successor);
 	}
 
-	public void assign(Passenger passenger) {
+	public boolean assign(Passenger passenger) {
 		if(canHandlePassenger(passenger,"Bron") || canHandlePassenger(passenger,"Silv") ){
 			//only first 4 chars possible
 			System.out.println("Passenger matches to BronzeSilver Lounge. Source: assign , BronzeSilverLounge");
-		}else{
+			return true;
+		}
+		else {
 			super.assign(passenger);
 		}
+		return true;
+		//true because maybe the next responsible class can handle the passenger
 	}//end method
+
 }

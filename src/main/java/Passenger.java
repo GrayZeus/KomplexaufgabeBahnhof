@@ -11,6 +11,16 @@ public class Passenger implements IDisplayListener {
 
 	private DrivingLog drivingLog = new DrivingLog();
 
+	private int[] loungePlace = new int[2];
+
+	public int[] getLoungePlace() {
+		return loungePlace;
+	}
+
+	public void setLoungePlace(int[] loungePlace) {
+		this.loungePlace = loungePlace;
+	}
+
 	public String getDestination() {
 		return destination;
 	}

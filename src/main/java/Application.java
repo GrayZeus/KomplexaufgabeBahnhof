@@ -23,13 +23,6 @@ public class Application {
 
 
 
-
-
-
-
-
-
-
         /*Repository repository = new Repository();
 
         Passenger[] tempPassengers = repository.getPassengers();
