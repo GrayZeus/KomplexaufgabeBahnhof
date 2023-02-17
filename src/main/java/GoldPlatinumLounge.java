@@ -18,8 +18,6 @@ public class GoldPlatinumLounge extends Lounge {
 				System.out.println("Lounge is full, passenger can't be added");
 				return false;
 			}
-
-
 		}else{
 			super.assign(passenger);
 		}

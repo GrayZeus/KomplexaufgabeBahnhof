@@ -1,3 +1,3 @@
 public interface IDisplayListener {
-	void updateEvent();
+	boolean updateEvent(String city, String track);
 }

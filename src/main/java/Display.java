@@ -17,15 +17,19 @@ public class Display {
 	public void removeListener(IDisplayListener listener) {
 		listeners.remove(listener);
 	}
-	public void updatedDisplay() {
-		for(IDisplayListener listener:listeners){
-			listener.updateEvent();
-		}
-	}
 
-	public String presentInformation(City city, Track track){
+	public void updatedDisplay(String city, String track) {
+		for(IDisplayListener listener:listeners){
+			if(listener.updateEvent(city,track)){
+				removeListener(listener);
+				//Lounge has to be informed...
+			}//end if
+		}//end for
+	}//end method
+
+	public String updateAndPresentInformation(String city, String track){
 		System.out.println("Train to " + city + " today from Track " + track +".");
-		updatedDisplay();
-		return city.getId().toString()+track.getId().toString();
+		updatedDisplay(city, track);
+		return city+track;
 	}
 }

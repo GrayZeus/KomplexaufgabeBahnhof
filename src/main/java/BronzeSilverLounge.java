@@ -10,9 +10,16 @@ public class BronzeSilverLounge extends Lounge {
 		if(canHandlePassenger(passenger,"Bron") || canHandlePassenger(passenger,"Silv") ){
 			//only first 4 chars possible
 			System.out.println("Passenger matches to BronzeSilver Lounge. Source: assign , BronzeSilverLounge");
-			return true;
-		}
-		else {
+			if(!isLoungeFull()){
+				System.out.println("Lounge isn't full, passenger will be added");
+				addPassengerToLounge(passenger);
+				return true;
+			}
+			else{
+				System.out.println("Lounge is full, passenger can't be added");
+				return false;
+			}
+		}else {
 			super.assign(passenger);
 		}
 		return true;

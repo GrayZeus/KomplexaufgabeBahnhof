@@ -9,7 +9,6 @@ public class TrainStation {
 	private City trainStationCity = new City("x");
 	private Train[] trains = new Train[10];
 
-	private SecurityControl securityControl = new SecurityControl();
 
 	private Lounge blueLounge,bronzeSilverLounge,goldPlatinLounge;
 
@@ -75,6 +74,11 @@ public class TrainStation {
 		}
 		System.out.println("ArrayList size: " + completedConfiguredPassengers.size());
 		assignConfiguredPassengersToTrains();
+	}
+
+
+	public void tellLoungesToUpdateDisplay(String destination, String trackID){
+		//blueLounge.
 	}
 
 	public void assignConfiguredPassengersToTrains(){

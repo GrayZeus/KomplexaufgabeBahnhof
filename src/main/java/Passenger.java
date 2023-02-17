@@ -9,6 +9,16 @@ public class Passenger implements IDisplayListener {
 
 	private String destination;
 
+	private boolean doneSecurityCheck = false;
+
+	public boolean isDoneSecurityCheck() {
+		return doneSecurityCheck;
+	}
+
+	public void setDoneSecurityCheck(boolean doneSecurityCheck) {
+		this.doneSecurityCheck = doneSecurityCheck;
+	}
+
 	private DrivingLog drivingLog = new DrivingLog();
 
 	private int[] loungePlace = new int[2];
@@ -59,9 +69,16 @@ public class Passenger implements IDisplayListener {
 		this.travelClass = travelClass;
 	}
 
+
+
 	@Override
-	public void updateEvent() {
-		System.out.println("Updated event on Lounge Display");
+	public boolean updateEvent(String city, String track) {
+		System.out.println("Updated event on Lounge Display.Source: updateEvent, Passenger class");
+		if(destination.equals(city)){
+			System.out.println("Display content matches destination of Passenger");
+			return true;
+		}
+		return false;
 	}
 
 	public int getPointsFromDrivingLog() {
