@@ -4,24 +4,19 @@ public class Application {
 
     public static void main(String... args){
         TrainStation trainStation = new TrainStation();
-
-        //trainStation.chooseRandomPassengers();
-
-        //trainStation.outputChoosedPassengers();
-
         trainStation.startDailyBusiness();
+        System.out.println("");
+        trainStation.moveCustomAmountOfPassengersToLounges(0,15);
 
-        trainStation.moveCustomAmountOfPassengersToLounges(1000,2000);
+        int[] yep = trainStation.getCompletedConfiguredPassengers().get(14).getLoungePlace();
+        System.out.println("Row " + yep[0] + " Column " + yep[1]);
+
+        //trainStation.tellLoungesToUpdateDisplay("XJ","T01");
+
+        //OLD#######################################################################
+        //trainStation.chooseRandomPassengers();
+        //trainStation.outputChoosedPassengers();
         //trainStation.outputCompletedConfiguredPassengers();
-
-
-
-
-
-
-
-
-
 
         /*Repository repository = new Repository();
 
@@ -34,10 +29,5 @@ public class Application {
         tempPassengers = repository.getPassengers();
         System.out.println(tempPassengers[3000].getPointsFromDrivingLog());
          */
-
-
-
-
-
     }//end main
 }

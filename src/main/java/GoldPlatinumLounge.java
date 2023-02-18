@@ -1,28 +1,33 @@
+import java.util.ArrayList;
+
 public class GoldPlatinumLounge extends Lounge {
 	private Passenger[][] passengers = new Passenger[25][100];
 	private Display display = new Display();
+	private SecurityControl securityControl = new SecurityControl();
 	public GoldPlatinumLounge(Lounge successor) {
 		setSuccessor(successor);
 	}
 
-	public boolean assign(Passenger passenger) {
-		if(canHandlePassenger(passenger,"Gold") || canHandlePassenger(passenger,"Plat") ){
-			//only first 4 chars possible
-			System.out.println("Passenger matches to GoldPlatinum Lounge. Source: assign, GoldPlatinumLounge");
-			if(!isLoungeFull()){
-				System.out.println("Lounge isn't full, passenger will be added");
-				addPassengerToLounge(passenger);
-				return true;
-			}
-			else{
-				System.out.println("Lounge is full, passenger can't be added");
-				return false;
-			}
-		}else{
-			super.assign(passenger);
-		}
-		return true;
-		//true because maybe the next responsible class can handle the passenger
-	}//end method
 
+
+
+	public ArrayList<Passenger> assign(ArrayList<Passenger> actualPassengers, int startValue, int endValue) {
+		for(int i = startValue ; i < endValue ; i++){
+			if(canHandlePassenger(actualPassengers.get(i),"Gold") || canHandlePassenger(actualPassengers.get(i),"Plat") ){
+				//only first 4 chars possible
+				System.out.println("Passenger matches to GoldPlatinum Lounge. Source: assign, GoldPlatinumLounge");
+				if(!isLoungeFull(passengers)){
+					System.out.println("Lounge isn't full, passenger will be added");
+					actualPassengers.set(i, addPassengerToLounge(actualPassengers.get(i), passengers));
+					System.out.println("");
+				}
+				else{
+					System.out.println("Lounge is full, passenger can't be added");
+				}
+			}else{
+				super.assign(actualPassengers, startValue,endValue);
+			}//end else
+		}//end for
+		return actualPassengers;
+	}//end method
 }

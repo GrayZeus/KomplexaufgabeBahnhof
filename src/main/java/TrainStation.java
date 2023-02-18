@@ -9,7 +9,6 @@ public class TrainStation {
 	private City trainStationCity = new City("x");
 	private Train[] trains = new Train[10];
 
-
 	private Lounge blueLounge,bronzeSilverLounge,goldPlatinLounge;
 
 	private Repository repository = new Repository();
@@ -19,6 +18,10 @@ public class TrainStation {
 	Passenger[] choosedPassengers = new Passenger[500];
 
 	ArrayList<Passenger> completedConfiguredPassengers = new ArrayList<>();
+
+	public ArrayList<Passenger> getCompletedConfiguredPassengers() {
+		return completedConfiguredPassengers;
+	}
 
 	public TrainStation() {
 		//initialization Tracks
@@ -54,12 +57,12 @@ public class TrainStation {
 
 
 	public void moveCustomAmountOfPassengersToLounges(int startValue, int endValue){
-		for(int i = startValue ; i < endValue ; i++){
+		//for(int i = startValue ; i < endValue ; i++){
 			//using CoR
 			//System.out.println("Passenger: " + completedConfiguredPassengers.get(i).getId() + " is assigned to the lounge corresponding to the state");
 			//System.out.println("he will drive to: " + completedConfiguredPassengers.get(i).getDestination() + " SOURCE: moveCustomAmountOfPassengersToLounges, TrainStation");
-			goldPlatinLounge.assign(completedConfiguredPassengers.get(i));
-		}//end for
+			completedConfiguredPassengers = goldPlatinLounge.assign(completedConfiguredPassengers, startValue, endValue);
+		//}//end for
 	}//end method
 
 
@@ -72,13 +75,16 @@ public class TrainStation {
 				completedConfiguredPassengers.add(choosedPassengers[x]);
 			}
 		}
-		System.out.println("ArrayList size: " + completedConfiguredPassengers.size());
+		//System.out.println("ArrayList size: " + completedConfiguredPassengers.size());
 		assignConfiguredPassengersToTrains();
+		System.out.println("Start daily business from TrainStation class completed");
 	}
 
 
 	public void tellLoungesToUpdateDisplay(String destination, String trackID){
-		//blueLounge.
+		blueLounge.tellDisplayToUpdate(destination, trackID);
+		//bronzeSilverLounge.tellDisplayToUpdate(destination, trackID);
+		//goldPlatinLounge.tellDisplayToUpdate(destination, trackID);
 	}
 
 	public void assignConfiguredPassengersToTrains(){
@@ -86,52 +92,52 @@ public class TrainStation {
 		for(int i = 0 ; i < 500 ; i++){
 			completedConfiguredPassengers.get(i).setDestination("XA");
 		}//end for
-		System.out.println("XA train full");
+		//System.out.println("XA train has 500 passengers assigned");
 		//XB
 		for(int i = 500 ; i < 1000 ; i++){
 			completedConfiguredPassengers.get(i).setDestination("XB");
 		}//end for
-		System.out.println("XB train full");
+		//System.out.println("XB has 500 passengers assigned");
 		//XC
 		for(int i = 1000 ; i < 1500 ; i++){
 			completedConfiguredPassengers.get(i).setDestination("XC");
 		}//end for
-		System.out.println("XC train full");
+		//System.out.println("XC has 500 passengers assigned");
 		//XD
 		for(int i = 1500 ; i < 2000 ; i++){
 			completedConfiguredPassengers.get(i).setDestination("XD");
 		}//end for
-		System.out.println("XD train full");
+		//System.out.println("XD has 500 passengers assigned");
 		//XE
 		for(int i = 2000 ; i < 2500 ; i++){
 			completedConfiguredPassengers.get(i).setDestination("XE");
 		}//end for
-		System.out.println("XE train full");
+		//System.out.println("XE has 500 passengers assigned");
 		//XF
 		for(int i = 2500 ; i < 3000 ; i++){
 			completedConfiguredPassengers.get(i).setDestination("XF");
 		}//end for
-		System.out.println("XF train full");
+		//System.out.println("XF has 500 passengers assigned");
 		//XG
 		for(int i = 3000 ; i < 3500 ; i++){
 			completedConfiguredPassengers.get(i).setDestination("XG");
 		}//end for
-		System.out.println("XG train full");
+		//System.out.println("XG has 500 passengers assigned");
 		//XH
 		for(int i = 3500 ; i < 4000 ; i++){
 			completedConfiguredPassengers.get(i).setDestination("XH");
 		}//end for
-		System.out.println("XH train full");
+		//System.out.println("XH has 500 passengers assigned");
 		//XI
 		for(int i = 4000 ; i < 4500 ; i++){
 			completedConfiguredPassengers.get(i).setDestination("XI");
 		}//end for
-		System.out.println("XI train full");
+		//System.out.println("XI has 500 passengers assigned");
 		//XJ
 		for(int i = 4500 ; i < 5000 ; i++){
 			completedConfiguredPassengers.get(i).setDestination("XJ");
 		}//end for
-		System.out.println("XJ train full");
+		//System.out.println("XJ has 500 passengers assigned");
 	}
 
 
@@ -157,11 +163,11 @@ public class TrainStation {
 
 			temp = random.nextInt(5000);
 			if(tempPassengers[temp] != null) {
-				System.out.println("Non null passenger found number: " + temp + " passenger will be deleted from tempPassengers");
+				//System.out.println("Non null passenger found number: " + temp + " passenger will be deleted from tempPassengers");
 				choosedPassengers[i] = tempPassengers[temp];
 				tempPassengers[temp] = null;
 				i += 1;
-				System.out.println("Counter number: " + i);
+				//System.out.println("Counter number: " + i);
 			}//end if
 		}
 		return choosedPassengers;
