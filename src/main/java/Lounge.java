@@ -20,14 +20,14 @@ public class Lounge {
 		return (passenger == null) || (passenger.getState().toString().substring(0, 4).equals(passengerType));
 	}
 
-	public ArrayList<Passenger> assign(ArrayList<Passenger> actualPassengers, int startValue, int endValue) {
+	public Passenger assign(Passenger passenger, int startValue, int endValue) {
 		//for (int i = startValue; i < endValue; i++) {
 			if (getSuccessor() != null) {
-				getSuccessor().assign(actualPassengers, startValue, endValue);
+				getSuccessor().assign(passenger,  startValue, endValue);
 			} else {
 				System.out.println("Unable to find correct passenger State. Source: assign, Lounge");
 			}
-			return actualPassengers;
+			return passenger;
 		//}//end for
 	}//end method
 

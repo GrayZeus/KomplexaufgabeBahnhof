@@ -11,22 +11,22 @@ public class BronzeSilverLounge extends Lounge {
 
 
 
-	public ArrayList<Passenger> assign(ArrayList<Passenger> actualPassengers, int startValue, int endValue) {
-		for(int i = startValue ; i < endValue ; i++) {
-			if (canHandlePassenger(actualPassengers.get(i), "Bron") || canHandlePassenger(actualPassengers.get(i), "Silv")) {
+	public Passenger assign(Passenger passenger, int startValue, int endValue) {
+		//for(int i = startValue ; i < endValue ; i++) {
+			if (canHandlePassenger(passenger, "Bron") || canHandlePassenger(passenger, "Silv")) {
 				//only first 4 chars possible
 				System.out.println("Passenger matches to BronzeSilver Lounge. Source: assign , BronzeSilverLounge");
 				if (!isLoungeFull(passengers)) {
 					System.out.println("Lounge isn't full, passenger will be added");
-					actualPassengers.set(i, addPassengerToLounge(actualPassengers.get(i), passengers));
+					addPassengerToLounge(passenger, passengers);
 				} else {
 					System.out.println("Lounge is full, passenger can't be added");
 				}
-			} else {
-				super.assign(actualPassengers, startValue, endValue);
+			}else {
+				super.assign(passenger, startValue, endValue);
 			}
-		}//end for
-		return actualPassengers;
+		//}//end for
+		return passenger;
 	}//end method
 
 }

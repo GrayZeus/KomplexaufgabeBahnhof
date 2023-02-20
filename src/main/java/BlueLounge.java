@@ -11,6 +11,29 @@ public class BlueLounge extends Lounge {
 
 
 
+	public Passenger assign(Passenger passenger, int startValue, int endValue) {
+		//for(int i = startValue ; i < endValue ; i++){
+			if(canHandlePassenger(passenger,"Blue")){
+				//only first 4 chars possible
+				System.out.println("Passenger: "+ passenger.getId() + " matches to Blue Lounge. Source: assign, BlueLounge");
+				if(!isLoungeFull(passengers)){
+					//System.out.println("Lounge isn't full, passenger will be added");
+					addPassengerToLounge(passenger, passengers);
+					System.out.println("");
+				}
+				else{
+					System.out.println("Lounge is full, passenger can't be added");
+				}
+			}else{
+				super.assign(passenger, startValue,endValue);
+			}//end else
+		//}//end for
+		return passenger;
+	}//end method
+
+
+	/*
+	OLD METHOD
 	public ArrayList<Passenger> assign(ArrayList<Passenger> actualPassengers, int startValue, int endValue) {
 		for(int i = startValue ; i < endValue ; i++){
 			if(canHandlePassenger(actualPassengers.get(i),"Blue")){
@@ -30,4 +53,5 @@ public class BlueLounge extends Lounge {
 		}//end for
 		return actualPassengers;
 	}//end method
+	 */
 }
