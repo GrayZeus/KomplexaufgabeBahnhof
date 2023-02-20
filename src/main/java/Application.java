@@ -8,8 +8,16 @@ public class Application {
         System.out.println("");
         trainStation.moveCustomAmountOfPassengersToLounges(0,15);
 
+
+
+
+        /*
+        OUTPUT OF PASSENGERS INFORMATIONS
+
         int[] yep = trainStation.getCompletedConfiguredPassengers().get(14).getLoungePlace();
         System.out.println("Row " + yep[0] + " Column " + yep[1]);
+        */
+
 
         //trainStation.tellLoungesToUpdateDisplay("XJ","T01");
 

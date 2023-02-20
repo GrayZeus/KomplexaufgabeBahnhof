@@ -64,8 +64,6 @@ public class Lounge {
 						tempPlaceArray[0] = x;
 						tempPlaceArray[1] = y;
 						passenger.setLoungePlace(tempPlaceArray);
-						//System.out.println("Passengers assigned seat over tempArray: " + tempPlaceArray[0] + tempPlaceArray[1]);
-						//System.out.println("");
 						System.out.println("Passengers assigned seat over passenger object: " + passenger.getLoungePlace()[0] +":" + passenger.getLoungePlace()[1] + " Source: addPassengerToLounge, Lounge" );
 						securityControl.doSecurityControl(passenger);
 						passengers[x][y] = passenger;

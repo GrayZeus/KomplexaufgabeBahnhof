@@ -12,7 +12,6 @@ public class GoldPlatinumLounge extends Lounge {
 
 
 	public Passenger assign(Passenger passenger, int startValue, int endValue) {
-		//for(int i = startValue ; i < endValue ; i++){
 			if(canHandlePassenger(passenger,"Gold") || canHandlePassenger(passenger,"Plat") ){
 				//only first 4 chars possible
 				System.out.println("Passenger matches to GoldPlatinum Lounge. Source: assign, GoldPlatinumLounge");
@@ -27,7 +26,6 @@ public class GoldPlatinumLounge extends Lounge {
 			}else{
 				super.assign(passenger, startValue,endValue);
 			}//end else
-		//}//end for
 		return passenger;
 	}//end method
 }

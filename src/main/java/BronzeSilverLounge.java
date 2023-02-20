@@ -12,7 +12,6 @@ public class BronzeSilverLounge extends Lounge {
 
 
 	public Passenger assign(Passenger passenger, int startValue, int endValue) {
-		//for(int i = startValue ; i < endValue ; i++) {
 			if (canHandlePassenger(passenger, "Bron") || canHandlePassenger(passenger, "Silv")) {
 				//only first 4 chars possible
 				System.out.println("Passenger matches to BronzeSilver Lounge. Source: assign , BronzeSilverLounge");
@@ -25,7 +24,6 @@ public class BronzeSilverLounge extends Lounge {
 			}else {
 				super.assign(passenger, startValue, endValue);
 			}
-		//}//end for
 		return passenger;
 	}//end method
 
