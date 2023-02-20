@@ -70,6 +70,13 @@ public class Passenger implements IDisplayListener {
 	}
 
 
+	/**
+	 * Observer pattern method. Passenger is a listener, listener will be informed if this method is called.
+	 * If the destination city of the passenger matches to the city on the display, true will be returned.
+	 * @param city
+	 * @param track
+	 * @return
+	 */
 
 	@Override
 	public boolean updateEvent(String city, String track) {

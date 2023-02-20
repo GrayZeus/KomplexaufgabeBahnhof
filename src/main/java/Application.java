@@ -6,8 +6,9 @@ public class Application {
         TrainStation trainStation = new TrainStation();
         trainStation.startDailyBusiness();
         System.out.println("");
-        trainStation.moveCustomAmountOfPassengersToLounges(0,15);
+        trainStation.moveCustomAmountOfPassengersToLounges(0,750);
 
+        trainStation.tellLoungesToUpdateDisplay("XJ","T01");
 
 
 

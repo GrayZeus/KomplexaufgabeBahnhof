@@ -77,8 +77,25 @@ public class Lounge {
 	}//end method
 
 	public void tellDisplayToUpdate(String city, String trackID){
-		String CSVlistOfPassengersWhoLeaveTheLounge;
-		CSVlistOfPassengersWhoLeaveTheLounge = display.updatedDisplay(city, trackID);
-		System.out.println(CSVlistOfPassengersWhoLeaveTheLounge);
+		ArrayList<Integer> seatPlacesToBeRemoved = display.updatedDisplay(city, trackID);
+		removeCollectionOfPassengers(seatPlacesToBeRemoved);
+		System.out.println("Size of Arraylist: " + seatPlacesToBeRemoved.size());
+		outputAllElementsOfCollection(seatPlacesToBeRemoved);
 	}
+
+	public void outputAllElementsOfCollection(ArrayList<Integer> seatPlacesToBeRemoved){
+		for(int i = 0 ; i < seatPlacesToBeRemoved.size() ; i++){
+			System.out.println(seatPlacesToBeRemoved.get(i));
+		}//end for
+	}
+
+	public void removeCollectionOfPassengers(ArrayList<Integer> seatPlacesToBeRemoved){
+		//pairs of row and column
+		//odd index is a row, straight index is a column
+		for (int i = 0 ; i < seatPlacesToBeRemoved.size() ; i+=2){
+			//System.out.println("Iteration number: "+ i);
+			passengers[seatPlacesToBeRemoved.get(i)][seatPlacesToBeRemoved.get(i+1)] = null;
+			System.out.println("Passenger at seat row: " + seatPlacesToBeRemoved.get(i) + " column: " + seatPlacesToBeRemoved.get(i+1) + " has been removed.");
+		}//end for
+	}//end method
 }

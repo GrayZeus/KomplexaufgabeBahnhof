@@ -18,34 +18,35 @@ public class Display {
 		listeners.remove(listener);
 	}
 
-	public String updatedDisplay(String city, String track) {
-		int[] tempPlaceArr = new int[2];
-		String csvReturnListOfLeavingPassengers = "NoPassengersWantToThisDestination Source: updatedDisplay, Display ";
+	public ArrayList<Integer> updatedDisplay(String city, String track) {
+		ArrayList<Integer> seatPlacesToBeRemoved = new ArrayList<>();
+		ArrayList<IDisplayListener> found = new ArrayList<>();
+
 		System.out.println("Train to " + city + " today from Track " + track +". Source: updateDisplay, Display class");
 		System.out.println("");
-		for(IDisplayListener iterationListener:listeners){
+
+		System.out.println("Listeners size: " + listeners.size() + " Source: updatedDisplay, Display");
+
+		for(int i = 0 ; i < listeners.size() ; i++){
 			//Passenger (listener) will be informed through if method call
-			if(iterationListener.updateEvent(city,track)){
-				//when passengers matches to the destination city, true will be returned, so the passenger can leave the lounge, no longer observing needed
-				//also passenger has to be removed from his seat in the lounge (row and column)
-				//Lounge has to be informed...
-				tempPlaceArr = iterationListener.getLoungePlace();
-				System.out.println("Seatplace of passenger: " + tempPlaceArr[0] + tempPlaceArr[1] + " Source: updatedDisplay, Display");
-				System.out.println("");
-				csvReturnListOfLeavingPassengers += Integer.toString(tempPlaceArr[0]);
-				csvReturnListOfLeavingPassengers += Integer.toString(tempPlaceArr[1]) + ";";
-				System.out.println(iterationListener.getId());
-				//removeListener(iterationListener);
+			if(listeners.get(i).updateEvent(city,track)){
+				//save seat from passenger so lounge can empty the seat
+				seatPlacesToBeRemoved.add(listeners.get(i).getLoungePlace()[0]); //ROWS are everytime odd
+				seatPlacesToBeRemoved.add(listeners.get(i).getLoungePlace()[1]); //COLUMNS are everytime straight
+				//save the listener which has to be deleted, avoid concurrentModificationException
+				found.add(listeners.get(i));
 			}//end if
 		}//end for
-		return csvReturnListOfLeavingPassengers;
-	}//end method
+		//System.out.println("Listeners size: " + listeners.size() + " Source: updatedDisplay, Display");
+		listeners.removeAll(found);
 
-	/*
-	public String updateAndPresentInformation(String city, String track){
-		System.out.println("Train to " + city + " today from Track " + track +".");
-		updatedDisplay(city, track);
-		return city+track;
-	}
-	 */
+
+		/*
+		for(int i:seatPlacesToBeRemoved){
+			System.out.println("From Dispaly: " +i);
+		}
+		 */
+
+		return seatPlacesToBeRemoved;
+	}//end method
 }
