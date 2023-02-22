@@ -31,22 +31,19 @@ public class Display {
 			//Passenger (listener) will be informed through if method call
 			if(listeners.get(i).updateEvent(city,track)){
 				//save seat from passenger so lounge can empty the seat
-				seatPlacesToBeRemoved.add(listeners.get(i).getLoungePlace()[0]); //ROWS are everytime odd
-				seatPlacesToBeRemoved.add(listeners.get(i).getLoungePlace()[1]); //COLUMNS are everytime straight
+				seatPlacesToBeRemoved.add(listeners.get(i).getLoungePlace()[0]); //ROWS are everytime even
+				seatPlacesToBeRemoved.add(listeners.get(i).getLoungePlace()[1]); //COLUMNS are everytime odd
 				//save the listener which has to be deleted, avoid concurrentModificationException
 				found.add(listeners.get(i));
 			}//end if
 		}//end for
 		//System.out.println("Listeners size: " + listeners.size() + " Source: updatedDisplay, Display");
 		listeners.removeAll(found);
-
-
 		/*
 		for(int i:seatPlacesToBeRemoved){
 			System.out.println("From Dispaly: " +i);
 		}
 		 */
-
 		return seatPlacesToBeRemoved;
 	}//end method
 }

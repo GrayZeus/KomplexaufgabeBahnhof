@@ -61,6 +61,11 @@ public class TrainStation {
 			//using CoR
 			Passenger tempPassenger;
 			tempPassenger = goldPlatinLounge.assign(completedConfiguredPassengers.get(i), startValue, endValue);
+
+			System.out.println("Row: " + completedConfiguredPassengers.get(i).getLoungePlace()[0] +
+					" Column: "	+	completedConfiguredPassengers.get(i).getLoungePlace()[1] +
+					" Source: moveCustomAmountOfPassengersToLounges, TrainStation");
+
 			completedConfiguredPassengers.set(i, tempPassenger);
 		}//end for
 	}//end method
@@ -190,8 +195,8 @@ public class TrainStation {
 
 
 	public boolean isChoosedPassengersFull(){
-		for(Passenger passenger: choosedPassengers) {
-			if (passenger == null) {
+		for(int i = 0 ; i < choosedPassengers.length ; i++) {
+			if (choosedPassengers[i] == null) {
 				return false;
 			}//end if
 		}//end for

@@ -80,12 +80,13 @@ public class Passenger implements IDisplayListener {
 
 	@Override
 	public boolean updateEvent(String city, String track) {
-		System.out.println("Updated event on Lounge Display.Source: updateEvent, Passenger class");
+		//System.out.println("Updated event on Lounge Display.Source: updateEvent, Passenger class");
 		if(destination.equals(city)){
-			System.out.println("Display content matches destination of Passenger");
+			//System.out.println("Display content matches destination of Passenger");
 			return true;
 		}
 		System.out.println("Passenger don't wan't to this destination.");
+		System.out.println("");
 		return false;
 	}
 

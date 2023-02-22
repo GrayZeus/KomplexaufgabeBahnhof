@@ -14,7 +14,7 @@ public class BlueLounge extends Lounge {
 	public Passenger assign(Passenger passenger, int startValue, int endValue) {
 			if(canHandlePassenger(passenger,"Blue")){
 				//only first 4 chars possible
-				System.out.println("Passenger: "+ passenger.getId() + " matches to Blue Lounge. Source: assign, BlueLounge");
+				//System.out.println("Passenger: "+ passenger.getId() + " matches to Blue Lounge. Source: assign, BlueLounge");
 				if(!isLoungeFull(passengers)){
 					//System.out.println("Lounge isn't full, passenger will be added");
 					addPassengerToLounge(passenger, passengers);

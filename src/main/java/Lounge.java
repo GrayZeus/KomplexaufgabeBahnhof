@@ -36,9 +36,9 @@ public class Lounge {
 	}
 
 	public boolean isLoungeFull(Passenger[][] passengers) {
-		for (int x = 0; x < 25; x++) {
+		for (int a = 0; a < 25; a++) {
 			for (int y = 0; y < 100; y++) {
-				if (passengers[x][y] == null) {
+				if (passengers[a][y] == null) {
 					//Lounge is not empty
 					return false;
 				}//end if
@@ -80,7 +80,7 @@ public class Lounge {
 		ArrayList<Integer> seatPlacesToBeRemoved = display.updatedDisplay(city, trackID);
 		removeCollectionOfPassengers(seatPlacesToBeRemoved);
 		System.out.println("Size of Arraylist: " + seatPlacesToBeRemoved.size());
-		outputAllElementsOfCollection(seatPlacesToBeRemoved);
+		//outputAllElementsOfCollection(seatPlacesToBeRemoved);
 	}
 
 	public void outputAllElementsOfCollection(ArrayList<Integer> seatPlacesToBeRemoved){
@@ -91,11 +91,12 @@ public class Lounge {
 
 	public void removeCollectionOfPassengers(ArrayList<Integer> seatPlacesToBeRemoved){
 		//pairs of row and column
-		//odd index is a row, straight index is a column
+		//even index is a row, odd index is a column
 		for (int i = 0 ; i < seatPlacesToBeRemoved.size() ; i+=2){
 			//System.out.println("Iteration number: "+ i);
 			passengers[seatPlacesToBeRemoved.get(i)][seatPlacesToBeRemoved.get(i+1)] = null;
-			System.out.println("Passenger at seat row: " + seatPlacesToBeRemoved.get(i) + " column: " + seatPlacesToBeRemoved.get(i+1) + " has been removed.");
+			System.out.println("Passenger at seat row: " + seatPlacesToBeRemoved.get(i) + " column: " +
+					seatPlacesToBeRemoved.get(i+1) + " has been removed. Source: removeCollectionPassengers, Lounge");
 		}//end for
 	}//end method
 }
