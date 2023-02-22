@@ -19,6 +19,10 @@ public class TrainStation {
 
 	ArrayList<Passenger> completedConfiguredPassengers = new ArrayList<>();
 
+	public Lounge getBlueLounge() {
+		return blueLounge;
+	}
+
 	public ArrayList<Passenger> getCompletedConfiguredPassengers() {
 		return completedConfiguredPassengers;
 	}
@@ -59,17 +63,28 @@ public class TrainStation {
 	public void moveCustomAmountOfPassengersToLounges(int startValue, int endValue){
 		for(int i = startValue ; i < endValue ; i++){
 			//using CoR
-
 			Passenger tempPassenger;
 			tempPassenger = goldPlatinLounge.assign(completedConfiguredPassengers.get(i));
 			completedConfiguredPassengers.set(i, tempPassenger);
-
-			System.out.println("Row: " + completedConfiguredPassengers.get(i).getLoungePlace()[0] +
+			/*
+			System.out.println("Train Passenger: " + completedConfiguredPassengers.get(i) + " Row: " + completedConfiguredPassengers.get(i).getLoungePlace()[0] +
 					" Column: "	+	completedConfiguredPassengers.get(i).getLoungePlace()[1] +
 					" Source: moveCustomAmountOfPassengersToLounges, TrainStation");
 
 
+			 */
 		}//end for
+
+		/*
+		Display tempDisp = getBlueLounge().getDisplay();
+		ArrayList<IDisplayListener> tempDispListeners = tempDisp.getListeners();
+		Passenger p;
+		for(int i = 0 ; i < tempDispListeners.size() ; i++){
+			p = (Passenger) tempDispListeners.get(i);
+			System.out.println("TRAINSTATION Passenger: " + p + " Seats at row: " + p.getLoungePlace()[0] + " column: "
+					+ p.getLoungePlace()[1] + " Source: moveCustomAmountOfPassengersToLounges, TrainStation ");
+		}//end
+		 */
 	}//end method
 
 

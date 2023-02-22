@@ -1,3 +1,4 @@
+import java.util.ArrayList;
 import java.util.Date;
 
 public class Application {
@@ -6,7 +7,10 @@ public class Application {
         TrainStation trainStation = new TrainStation();
         trainStation.startDailyBusiness();
         //System.out.println("");
-        trainStation.moveCustomAmountOfPassengersToLounges(0,550);
+
+
+        //2nd int value max 500!!!!
+        trainStation.moveCustomAmountOfPassengersToLounges(0,500);
 
         trainStation.tellLoungesToUpdateDisplay("XJ","T01");
 

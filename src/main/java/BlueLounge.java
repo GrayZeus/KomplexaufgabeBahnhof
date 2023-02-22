@@ -27,6 +27,19 @@ public class BlueLounge extends Lounge {
 		}else{
 			newPassenger = super.assign(passenger);
 		}//end else
+
+		/*
+		Display tempDisplay = getDisplay();
+		ArrayList<IDisplayListener> tempDispListeners = tempDisplay.getListeners();
+		Passenger p;
+		for(int i = 0 ; i < tempDispListeners.size() ; i++){
+			p = (Passenger) tempDispListeners.get(i);
+			System.out.println("BLUELOUNGE Passenger: " + p + " Seats at row: " + p.getLoungePlace()[0] +
+					" column: " + p.getLoungePlace()[1] + " Source: moveCustomAmountOfPassengersToLounges, TrainStation ");
+		}//end
+		 */
+
+
 		return newPassenger;
 	}//end method
 }//end class

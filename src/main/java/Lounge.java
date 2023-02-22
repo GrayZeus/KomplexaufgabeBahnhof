@@ -11,6 +11,10 @@ public class Lounge {
 		return successor;
 	}
 
+	public Display getDisplay() {
+		return display;
+	}
+
 	public void setSuccessor(Lounge successor) {
 		this.successor = successor;
 	}
@@ -65,11 +69,19 @@ public class Lounge {
 						tempPlaceArray[0] = x;
 						tempPlaceArray[1] = y;
 						passenger.setLoungePlace(tempPlaceArray);
-						System.out.println("");
-						System.out.println("Passengers assigned seat over passenger object: " + passenger.getLoungePlace()[0] +":" + passenger.getLoungePlace()[1] + " Source: addPassengerToLounge, Lounge" );
+						//System.out.println("");
+						//System.out.println("Passengers: " + passenger +  " assigned seat over passenger object: " + passenger.getLoungePlace()[0] +":" + passenger.getLoungePlace()[1] + " Source: addPassengerToLounge, Lounge" );
 						securityControl.doSecurityControl(passenger);
 						passengers[x][y] = passenger;
 						addDisplayListener(passenger);
+
+
+
+						ArrayList<IDisplayListener> tempDispListeners = getDisplay().getListeners();
+						Passenger p;
+							p = (Passenger) tempDispListeners.get(y);
+							//System.out.println("LOUNGE Passenger: " + p + " Seats at row: " + p.getLoungePlace()[0] + " column: " +
+							//	p.getLoungePlace()[1]);
 						return passenger; //return value here is important!
 					}//end if
 				}//end 2 for
@@ -81,7 +93,7 @@ public class Lounge {
 	public void tellDisplayToUpdate(String city, String trackID){
 		ArrayList<Integer> seatPlacesToBeRemoved = display.updatedDisplay(city, trackID);
 		removeCollectionOfPassengers(seatPlacesToBeRemoved);
-		System.out.println("Size of Arraylist: " + seatPlacesToBeRemoved.size());
+		//System.out.println("Size of Arraylist: " + seatPlacesToBeRemoved.size());
 		//outputAllElementsOfCollection(seatPlacesToBeRemoved);
 	}
 
@@ -97,8 +109,8 @@ public class Lounge {
 		for (int i = 0 ; i < seatPlacesToBeRemoved.size() ; i+=2){
 			//System.out.println("Iteration number: "+ i);
 			passengers[seatPlacesToBeRemoved.get(i)][seatPlacesToBeRemoved.get(i+1)] = null;
-			System.out.println("Passenger at seat row: " + seatPlacesToBeRemoved.get(i) + " column: " +
-					seatPlacesToBeRemoved.get(i+1) + " has been removed. Source: removeCollectionPassengers, Lounge");
+			//System.out.println("Passenger at seat row: " + seatPlacesToBeRemoved.get(i) + " column: " +
+			//		seatPlacesToBeRemoved.get(i+1) + " has been removed. Source: removeCollectionPassengers, Lounge");
 		}//end for
 	}//end method
 }

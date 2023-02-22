@@ -27,6 +27,7 @@ public class GoldPlatinumLounge extends Lounge {
 		}else{
 			newPassenger = super.assign(passenger);
 		}//end else
+
 		return newPassenger;
 	}//end method
 }
