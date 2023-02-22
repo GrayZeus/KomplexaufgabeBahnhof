@@ -20,14 +20,15 @@ public class Lounge {
 		return (passenger == null) || (passenger.getState().toString().substring(0, 4).equals(passengerType));
 	}
 
-	public Passenger assign(Passenger passenger, int startValue, int endValue) {
+	public Passenger assign(Passenger passenger) {
+		Passenger newPassenger = new Passenger(9999);
 		//for (int i = startValue; i < endValue; i++) {
 			if (getSuccessor() != null) {
-				getSuccessor().assign(passenger,  startValue, endValue);
+				newPassenger = getSuccessor().assign(passenger);
 			} else {
 				System.out.println("Unable to find correct passenger State. Source: assign, Lounge");
 			}
-			return passenger;
+			return newPassenger;
 		//}//end for
 	}//end method
 
@@ -48,8 +49,8 @@ public class Lounge {
 		return true;
 	}//end method
 
-
 	/**
+
 	 * Adds the parameter passenger to the lounge.
 	 * Does Security check, sets Passengers lounge place and add the passenger to the DisplayListener.
 	 * @param passenger
@@ -64,11 +65,12 @@ public class Lounge {
 						tempPlaceArray[0] = x;
 						tempPlaceArray[1] = y;
 						passenger.setLoungePlace(tempPlaceArray);
+						System.out.println("");
 						System.out.println("Passengers assigned seat over passenger object: " + passenger.getLoungePlace()[0] +":" + passenger.getLoungePlace()[1] + " Source: addPassengerToLounge, Lounge" );
 						securityControl.doSecurityControl(passenger);
 						passengers[x][y] = passenger;
 						addDisplayListener(passenger);
-						return passenger;
+						return passenger; //return value here is important!
 					}//end if
 				}//end 2 for
 			}//end 1 for

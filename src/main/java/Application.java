@@ -5,7 +5,7 @@ public class Application {
     public static void main(String... args){
         TrainStation trainStation = new TrainStation();
         trainStation.startDailyBusiness();
-        System.out.println("");
+        //System.out.println("");
         trainStation.moveCustomAmountOfPassengersToLounges(0,550);
 
         trainStation.tellLoungesToUpdateDisplay("XJ","T01");

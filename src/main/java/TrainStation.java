@@ -59,14 +59,16 @@ public class TrainStation {
 	public void moveCustomAmountOfPassengersToLounges(int startValue, int endValue){
 		for(int i = startValue ; i < endValue ; i++){
 			//using CoR
+
 			Passenger tempPassenger;
-			tempPassenger = goldPlatinLounge.assign(completedConfiguredPassengers.get(i), startValue, endValue);
+			tempPassenger = goldPlatinLounge.assign(completedConfiguredPassengers.get(i));
+			completedConfiguredPassengers.set(i, tempPassenger);
 
 			System.out.println("Row: " + completedConfiguredPassengers.get(i).getLoungePlace()[0] +
 					" Column: "	+	completedConfiguredPassengers.get(i).getLoungePlace()[1] +
 					" Source: moveCustomAmountOfPassengersToLounges, TrainStation");
 
-			completedConfiguredPassengers.set(i, tempPassenger);
+
 		}//end for
 	}//end method
 

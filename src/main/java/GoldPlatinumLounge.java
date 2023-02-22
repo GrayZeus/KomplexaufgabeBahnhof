@@ -11,21 +11,22 @@ public class GoldPlatinumLounge extends Lounge {
 
 
 
-	public Passenger assign(Passenger passenger, int startValue, int endValue) {
-			if(canHandlePassenger(passenger,"Gold") || canHandlePassenger(passenger,"Plat") ){
-				//only first 4 chars possible
-				System.out.println("Passenger matches to GoldPlatinum Lounge. Source: assign, GoldPlatinumLounge");
-				if(!isLoungeFull(passengers)){
-					System.out.println("Lounge isn't full, passenger will be added");
-					addPassengerToLounge(passenger, passengers);
-					System.out.println("");
-				}
-				else{
-					System.out.println("Lounge is full, passenger can't be added");
-				}
-			}else{
-				super.assign(passenger, startValue,endValue);
-			}//end else
-		return passenger;
+	public Passenger assign(Passenger passenger) {
+		Passenger newPassenger = new Passenger(9999);
+		if(canHandlePassenger(passenger,"Gold") || canHandlePassenger(passenger,"Plat") ){
+			//only first 4 chars possible
+			System.out.println("Passenger matches to GoldPlatinum Lounge. Source: assign, GoldPlatinumLounge");
+			if(!isLoungeFull(passengers)){
+				System.out.println("Lounge isn't full, passenger will be added");
+				newPassenger = addPassengerToLounge(passenger, passengers);
+				System.out.println("");
+			}
+			else{
+				System.out.println("Lounge is full, passenger can't be added");
+			}
+		}else{
+			newPassenger = super.assign(passenger);
+		}//end else
+		return newPassenger;
 	}//end method
 }

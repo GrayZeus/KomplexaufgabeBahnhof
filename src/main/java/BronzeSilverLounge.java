@@ -11,20 +11,21 @@ public class BronzeSilverLounge extends Lounge {
 
 
 
-	public Passenger assign(Passenger passenger, int startValue, int endValue) {
-			if (canHandlePassenger(passenger, "Bron") || canHandlePassenger(passenger, "Silv")) {
-				//only first 4 chars possible
-				System.out.println("Passenger matches to BronzeSilver Lounge. Source: assign , BronzeSilverLounge");
-				if (!isLoungeFull(passengers)) {
-					System.out.println("Lounge isn't full, passenger will be added");
-					addPassengerToLounge(passenger, passengers);
-				} else {
-					System.out.println("Lounge is full, passenger can't be added");
-				}
-			}else {
-				super.assign(passenger, startValue, endValue);
+	public Passenger assign(Passenger passenger) {
+		Passenger newPassenger = new Passenger(9999);
+		if (canHandlePassenger(passenger, "Bron") || canHandlePassenger(passenger, "Silv")) {
+			//only first 4 chars possible
+			System.out.println("Passenger matches to BronzeSilver Lounge. Source: assign , BronzeSilverLounge");
+			if (!isLoungeFull(passengers)) {
+				System.out.println("Lounge isn't full, passenger will be added");
+				newPassenger = addPassengerToLounge(passenger, passengers);
+			} else {
+				System.out.println("Lounge is full, passenger can't be added");
 			}
-		return passenger;
+		}else {
+			newPassenger = super.assign(passenger);
+		}
+		return newPassenger;
 	}//end method
 
 }
