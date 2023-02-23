@@ -70,21 +70,8 @@ public class TrainStation {
 			System.out.println("Train Passenger: " + completedConfiguredPassengers.get(i) + " Row: " + completedConfiguredPassengers.get(i).getLoungePlace()[0] +
 					" Column: "	+	completedConfiguredPassengers.get(i).getLoungePlace()[1] +
 					" Source: moveCustomAmountOfPassengersToLounges, TrainStation");
-
-
 			 */
 		}//end for
-
-		/*
-		Display tempDisp = getBlueLounge().getDisplay();
-		ArrayList<IDisplayListener> tempDispListeners = tempDisp.getListeners();
-		Passenger p;
-		for(int i = 0 ; i < tempDispListeners.size() ; i++){
-			p = (Passenger) tempDispListeners.get(i);
-			System.out.println("TRAINSTATION Passenger: " + p + " Seats at row: " + p.getLoungePlace()[0] + " column: "
-					+ p.getLoungePlace()[1] + " Source: moveCustomAmountOfPassengersToLounges, TrainStation ");
-		}//end
-		 */
 	}//end method
 
 
@@ -181,7 +168,6 @@ public class TrainStation {
 		int temp = 0;
 		int i = 0;
 		while(!isChoosedPassengersFull()){
-
 			temp = random.nextInt(5000);
 			if(tempPassengers[temp] != null) {
 				//System.out.println("Non null passenger found number: " + temp + " passenger will be deleted from tempPassengers");

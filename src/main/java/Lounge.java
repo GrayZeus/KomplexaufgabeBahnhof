@@ -1,12 +1,12 @@
 import java.util.ArrayList;
 
 public class Lounge {
-	private Passenger[][] passengers = new Passenger[25][100];
-	private Display display = new Display();
+	protected Passenger[][] passengers;
+	protected Display display;
+	protected SecurityControl securityControl;
 	private Lounge successor;
 
-	private SecurityControl securityControl = new SecurityControl();
-
+	//GETTER AND SETTERS ###############################################################################################
 	public Lounge getSuccessor() {
 		return successor;
 	}
@@ -19,11 +19,14 @@ public class Lounge {
 		this.successor = successor;
 	}
 
-	public boolean canHandlePassenger(Passenger passenger, String passengerType) {
-		//System.out.println("canHandlePassenger method from class Lounge: " + passenger.getState().toString().substring(0,4));
-		return (passenger == null) || (passenger.getState().toString().substring(0, 4).equals(passengerType));
+	//CONSTRUCTOR ####################################################################################################
+	public Lounge(){
+		passengers = new Passenger[25][100];
+		display = new Display();
+		securityControl = new SecurityControl();
 	}
 
+	//METHODS #########################################################################################################
 	public Passenger assign(Passenger passenger) {
 		Passenger newPassenger = new Passenger(9999);
 		//for (int i = startValue; i < endValue; i++) {
@@ -36,11 +39,16 @@ public class Lounge {
 		//}//end for
 	}//end method
 
+	public boolean canHandlePassenger(Passenger passenger, String passengerType) {
+		//System.out.println("canHandlePassenger method from class Lounge: " + passenger.getState().toString().substring(0,4));
+		return (passenger == null) || (passenger.getState().toString().substring(0, 4).equals(passengerType));
+	}
+
 	public void addDisplayListener(IDisplayListener listener) {
 		display.addListener(listener);
 	}
 
-	public boolean isLoungeFull(Passenger[][] passengers) {
+	public boolean isLoungeFull() {
 		for (int a = 0; a < 25; a++) {
 			for (int y = 0; y < 100; y++) {
 				if (passengers[a][y] == null) {
@@ -60,28 +68,18 @@ public class Lounge {
 	 * @param passenger
 	 * @return
 	 */
-	public Passenger addPassengerToLounge(Passenger passenger, Passenger[][] passengersForFullCheck) {
+	public Passenger addPassengerToLounge(Passenger passenger) {
 		int[] tempPlaceArray = new int[2];
-		if (!isLoungeFull(passengersForFullCheck)) {
+		if (!isLoungeFull()) {
 			for (int x = 0; x < 25; x++) {
 				for (int y = 0; y < 100; y++) {
 					if (passengers[x][y] == null) {
 						tempPlaceArray[0] = x;
 						tempPlaceArray[1] = y;
 						passenger.setLoungePlace(tempPlaceArray);
-						//System.out.println("");
-						//System.out.println("Passengers: " + passenger +  " assigned seat over passenger object: " + passenger.getLoungePlace()[0] +":" + passenger.getLoungePlace()[1] + " Source: addPassengerToLounge, Lounge" );
 						securityControl.doSecurityControl(passenger);
 						passengers[x][y] = passenger;
 						addDisplayListener(passenger);
-
-
-
-						ArrayList<IDisplayListener> tempDispListeners = getDisplay().getListeners();
-						Passenger p;
-							p = (Passenger) tempDispListeners.get(y);
-							//System.out.println("LOUNGE Passenger: " + p + " Seats at row: " + p.getLoungePlace()[0] + " column: " +
-							//	p.getLoungePlace()[1]);
 						return passenger; //return value here is important!
 					}//end if
 				}//end 2 for
@@ -109,8 +107,8 @@ public class Lounge {
 		for (int i = 0 ; i < seatPlacesToBeRemoved.size() ; i+=2){
 			//System.out.println("Iteration number: "+ i);
 			passengers[seatPlacesToBeRemoved.get(i)][seatPlacesToBeRemoved.get(i+1)] = null;
-			//System.out.println("Passenger at seat row: " + seatPlacesToBeRemoved.get(i) + " column: " +
-			//		seatPlacesToBeRemoved.get(i+1) + " has been removed. Source: removeCollectionPassengers, Lounge");
+			System.out.println("Passenger at seat row: " + seatPlacesToBeRemoved.get(i) + " column: " +
+					seatPlacesToBeRemoved.get(i+1) + " has been removed. Source: removeCollectionPassengers, Lounge");
 		}//end for
 	}//end method
 }
