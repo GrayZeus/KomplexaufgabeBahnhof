@@ -94,7 +94,7 @@ public class Passenger implements IDisplayListener {
 			return true;
 		}
 		System.out.println("Passenger don't wan't to city: " + city +" he wants to: " + destination +".");
-		System.out.println("");
+//		System.out.println("");
 		return false;
 	}
 
@@ -152,7 +152,7 @@ public class Passenger implements IDisplayListener {
 		int extraPoints = 0;
 		if(drivingLog.getDates().size() % 10 == 0){
 			extraPoints = distance*3;
-			System.out.println("YAYYYY that's your 10th drive! Source everyTenThRouteDriven, Passenger");
+//			System.out.println("YAYYYY that's your 10th drive! Source everyTenThRouteDriven, Passenger");
 			return extraPoints;
 		}//end if
 		return extraPoints;
@@ -171,7 +171,7 @@ public class Passenger implements IDisplayListener {
 			return false;
 		} else {
 			promote();
-			System.out.println("Congrats " + this + " passengers FTP State has been promoted. Source: preconditionNewStateThenPromote, Passenger ");
+//			System.out.println("Congrats " + this + " passengers FTP State has been promoted. Source: preconditionNewStateThenPromote, Passenger ");
 			return true;
 		}
 	}//end method

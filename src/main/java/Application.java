@@ -6,21 +6,10 @@ import java.util.Date;
 public class Application {
 
     public static void main(String... args){
-
-
         TrainStation trainStation = new TrainStation();
-
-        for(int i = 0 ; i < 50; i++){
+        for(int i = 0 ; i < 150; i++){
             trainStation.startDailyBusiness();
-
-            System.out.println();
-            System.out.println();
-            System.out.println("#####################################################################################");
-            System.out.println("END OF ROUND: " + i);
-            System.out.println("#####################################################################################");
-            System.out.println();
-            System.out.println();
+            trainStation.writeSeparatorToSout(i);
         }//end
-
     }//end main
 }

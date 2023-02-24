@@ -24,8 +24,8 @@ public class Display {
 		ArrayList<IDisplayListener> found = new ArrayList<>();
 		int row;
 		int column;
-		System.out.println("");
-		System.out.println("Train to " + city + " today from Track " + track +". Source: Display");
+//		System.out.println("");
+//		System.out.println("Train to " + city + " today from Track " + track +". Source: Display");
 		for(int i = 0 ; i < listeners.size() ; i++){
 			if(listeners.get(i).updateEvent(city,track)){
 				//save seat from passenger so lounge can empty the seat
@@ -38,8 +38,8 @@ public class Display {
 			}//end if
 		}//end for
 		listeners.removeAll(found);
-		System.out.println("");
-		System.out.println("All passengers who wanted to " + city + " have been deleted in listeners. Source: Display");
+//		System.out.println("");
+//		System.out.println("All passengers who wanted to " + city + " have been deleted in listeners. Source: Display");
 		return seatPlacesToBeRemoved;
 	}//end method
 }

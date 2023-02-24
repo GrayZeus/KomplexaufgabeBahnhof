@@ -107,8 +107,8 @@ public class Lounge {
 			//System.out.println("Iteration number: "+ i);
 			passengers[seatPlacesToBeRemoved.get(i)][seatPlacesToBeRemoved.get(i+1)] = null;
 		}//end for
-		System.out.println();
-		System.out.println("The passengers who go to their train now, have been removed from the lounge. Source: Lounge");
+//		System.out.println();
+//		System.out.println("The passengers who go to their train now, have been removed from the lounge. Source: Lounge");
 	}//end method
 
 	public void outputAllElementsOfCollection(ArrayList<Integer> seatPlacesToBeRemoved){

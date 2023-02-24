@@ -12,7 +12,7 @@ public class GoldPlatinumLounge extends Lounge {
 			if(!isLoungeFull()){
 //				System.out.println("Lounge isn't full, passenger will be added");
 				passenger = addPassengerToLounge(passenger);
-				System.out.println("");
+//				System.out.println("");
 			}
 			else{
 				System.out.println("Lounge is full, passenger can't be added");

@@ -59,6 +59,7 @@ public class TrainStation {
 	// CLASS METHODS/ LOGIC METHODS ###############################################################################################
 
 	public void startDailyBusiness(){
+		System.out.println("Determine random passengers. Source: TrainStation");
 		for(int i = 0 ; i < 10 ; i++){
 			chooseRandomPassengers();
 			configureChosenPassengersTravelClass();
@@ -68,9 +69,11 @@ public class TrainStation {
 			clearChosenPassengers();
 		}//end for
 		assignConfiguredPassengersToTrains();
+		System.out.println("All 5000 passengers have been assigned to their trains. Source: TrainStation");
 		movePassengersSuccessivelyToLoungeAndUpdateDisplay();
+		System.out.println("All 5000 passengers have been in their lounge and have driven their train. Source: TrainStation");
 		endOfDayUpdatePassengersFromRepository();
-		System.out.println("");
+		System.out.println("End of the day, resetting TrainStation for the next day. Source: TrainStation");
 		System.out.println("Daily business completed successful. Source: TrainStation");
 	}//end method
 
@@ -78,13 +81,12 @@ public class TrainStation {
 		for(int i = 0 ; i < passengersFromRepository.length ; i++){
 			passengersFromRepository[i] = completedConfiguredPassengers.get(i);
 		}//end
+/*
 
-
-		/*
 		for(int i = 0 ; i < completedConfiguredPassengers.size() ; i++){
-			System.out.println("Size of driving log entries: " + completedConfiguredPassengers.get(i).getDrivingLog().getDates().size());
+			System.out.println("Passengers FTP State: " + completedConfiguredPassengers.get(i).getState().getClass().toString());
 		}
-		 */
+ */
 		completedConfiguredPassengers.removeAll(completedConfiguredPassengers);
 	}
 
@@ -134,8 +136,8 @@ public class TrainStation {
 		blueLounge.tellDisplayToUpdate(destination, trackID);
 		bronzeSilverLounge.tellDisplayToUpdate(destination, trackID);
 		goldPlatinLounge.tellDisplayToUpdate(destination, trackID);
-		System.out.println();
-		System.out.println("All Displays in every Lounge has been updated. Source: TrainStation");
+//		System.out.println();
+//		System.out.println("All Displays in every Lounge has been updated. Source: TrainStation");
 	}
 
 	public void assignConfiguredPassengersToTrains(){
@@ -189,8 +191,7 @@ public class TrainStation {
 			completedConfiguredPassengers.get(i).setDestination("XJ");
 		}//end for
 //		System.out.println("XJ has 500 passengers assigned");
-		System.out.println("");
-		System.out.println("All 5000 passengers have been assigned to their trains. Source: TrainStation");
+//		System.out.println("");
 	}
 
 
@@ -246,6 +247,15 @@ public class TrainStation {
 		distances.put("XJ",200);
 	}
 
+	public void writeSeparatorToSout(int i){
+		System.out.println();
+		System.out.println();
+		System.out.println("#####################################################################################");
+		System.out.println("END OF ROUND: " + i);
+		System.out.println("#####################################################################################");
+		System.out.println();
+		System.out.println();
+	}
 
 	public void outputCompletedConfiguredPassengers(){
 		for(Passenger passenger: completedConfiguredPassengers){
