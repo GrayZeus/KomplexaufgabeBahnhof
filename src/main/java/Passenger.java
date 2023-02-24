@@ -85,7 +85,7 @@ public class Passenger implements IDisplayListener {
 			//System.out.println("Display content matches destination of Passenger");
 			return true;
 		}
-		System.out.println("Passenger don't wan't to this destination.");
+		System.out.println("Passenger don't wan't to city: " + city +" he wants to: " + destination +".");
 		System.out.println("");
 		return false;
 	}
