@@ -1,7 +1,10 @@
+import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.Date;
+import java.util.HashMap;
 
 public class Passenger implements IDisplayListener {
+	// GENERAL ATTRIBUTES#######################################################################################################
 	private int id;
 	private IFTPState state;
 
@@ -10,6 +13,11 @@ public class Passenger implements IDisplayListener {
 	private String destination;
 
 	private boolean doneSecurityCheck = false;
+	private DrivingLog drivingLog = new DrivingLog();
+	private int[] loungePlace = new int[2];
+	private HashMap<String, Integer> distances = new HashMap<>();
+
+	//GETTER AND SETTER METHODS #############################################################################################
 
 	public boolean isDoneSecurityCheck() {
 		return doneSecurityCheck;
@@ -18,31 +26,21 @@ public class Passenger implements IDisplayListener {
 	public void setDoneSecurityCheck(boolean doneSecurityCheck) {
 		this.doneSecurityCheck = doneSecurityCheck;
 	}
-
-	private DrivingLog drivingLog = new DrivingLog();
-
-	private int[] loungePlace = new int[2];
-
 	public int[] getLoungePlace() {
 		return loungePlace;
 	}
-
 	public void setLoungePlace(int[] loungePlace) {
 		this.loungePlace = loungePlace;
 	}
-
 	public String getDestination() {
 		return destination;
 	}
-
 	public void setDestination(String destination) {
 		this.destination = destination;
 	}
-
 	public IFTPState getState() {
 		return state;
 	}
-
 	public void setState(IFTPState state) {
 		this.state = state;
 	}
@@ -51,14 +49,24 @@ public class Passenger implements IDisplayListener {
 		return id;
 	}
 
-	public void promote() {
-		state.promote(this);
+	public DrivingLog getDrivingLog() {
+		return drivingLog;
 	}
+
+	//CONSTRUCTOR ########################################################################################################
+
 
 	public Passenger(int id) {
 		//initial state for all Passengers
 		this.state = new Blue();
 		this.id = id;
+		instantiateDistancesToOtherCities();
+	}
+
+	//METHODS ########################################################################################################
+
+	public void promote() {
+		state.promote(this);
 	}
 
 	public TravelClass getTravelClass() {
@@ -99,17 +107,75 @@ public class Passenger implements IDisplayListener {
 		return returnValue;
 	}//end method
 
-	public void recordJourney(Date date, String route, int points) {
-		ArrayList<Date> tempDates = drivingLog.getDates();
-		ArrayList<String> tempRoutes = drivingLog.getRoutes();
-		ArrayList<Integer> tempPoints = drivingLog.getPoints();
-		tempDates.add(date);
-		tempRoutes.add(route);
-		tempPoints.add(points);
-		drivingLog.setDates(tempDates);
-		drivingLog.setRoutes(tempRoutes);
-		drivingLog.setPoints(tempPoints);
+	public void recordJourney(LocalDateTime dateTime) {
+		//get ArrayLists
+		ArrayList<LocalDateTime> passengerDates = drivingLog.getDates();
+		ArrayList<String> passengerRoutes = drivingLog.getRoutes();
+		ArrayList<Integer> passengerPoints = drivingLog.getPoints();
+		//add data
+		passengerDates.add(dateTime);
+		passengerRoutes.add(destination);
+		int points = evaluatePointAmount(distances.get(destination));
+		passengerPoints.add(points);
+		//set ArrayLists
+		drivingLog.setDates(passengerDates);
+		drivingLog.setRoutes(passengerRoutes);
+		drivingLog.setPoints(passengerPoints);
+		//update state
+		preconditionNewStateThenPromote();
+	}//end method
+
+
+	public int evaluatePointAmount(int distance) {
+		int points = 0;
+		switch (travelClass.toString()) {
+			case "FIRST":
+				points = 2 * distance + everyTenThRouteDriven(distance);
+				break;
+			case "BUSINESS":
+				if (drivingLog.getDates().size() >= 3) {
+					points = 2 * distance + everyTenThRouteDriven(distance);
+				}
+				break;
+			case "ECONOMY":
+				if (drivingLog.getDates().size() >= 3) {
+					points = distance + 50 + everyTenThRouteDriven(distance);
+				}
+				break;
+			default:
+				System.out.println("Something ain't right. Source: evaluatePointAmount, Passenger ");
+		}
+		return points;
 	}
+
+	public int everyTenThRouteDriven(int distance){
+		int extraPoints = 0;
+		if(drivingLog.getDates().size() % 10 == 0){
+			extraPoints = distance*3;
+			System.out.println("YAYYYY that's your 10th drive! Source everyTenThRouteDriven, Passenger");
+			return extraPoints;
+		}//end if
+		return extraPoints;
+	}//end method
+
+
+
+	public boolean preconditionNewStateThenPromote() {
+		//false = not promoted
+		//true = promoted
+		String actualState = state.getClass().toString();
+		String futureState = evaluateFTPState();
+		if (actualState.equals("class " + futureState)) {
+			//Passenger stays in his state
+			//System.out.println("Passenger stays in his state. Source: Passenger");
+			return false;
+		} else {
+			promote();
+			System.out.println("Congrats " + this + " passengers FTP State has been promoted. Source: preconditionNewStateThenPromote, Passenger ");
+			return true;
+		}
+	}//end method
+
 
 	public String evaluateFTPState() {
 		int points = getPointsFromDrivingLog();
@@ -131,37 +197,18 @@ public class Passenger implements IDisplayListener {
 		}
 	}
 
-	public boolean preconditionNewStateThenPromote() {
-		//false = not promoted
-		//true = promoted
-		String actualState = state.getClass().toString();
-		String futureState = evaluateFTPState();
-		if (actualState.equals("class " + futureState)) {
-			//Passenger stays in his state
-			return false;
-		} else {
-			promote();
-			return true;
-		}
-	}//end method
-
-	public int evaluatePointAmount(int distance) {
-		int points = 0;
-		switch (travelClass.toString()) {
-			case "First":
-				points = 2 * distance;
-				break;
-			case "Business":
-				if (drivingLog.getDates().size() >= 3) {
-					points = 2 * distance;
-				}
-				break;
-			case "Economy":
-				if (drivingLog.getDates().size() >= 3) {
-					points = distance + 50;
-				}
-				break;
-		}
-		return points;
+	public void instantiateDistancesToOtherCities(){
+		distances.put("XA",125);
+		distances.put("XB",225);
+		distances.put("XC",185);
+		distances.put("XD",85);
+		distances.put("XE",85);
+		distances.put("XF",50);
+		distances.put("XG",85);
+		distances.put("XH",250);
+		distances.put("XI",115);
+		distances.put("XJ",200);
 	}
+
+
 }//end passenger class

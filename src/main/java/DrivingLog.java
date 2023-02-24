@@ -1,12 +1,13 @@
+import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.Date;
 
 public class DrivingLog {
-    private ArrayList<Date> dates = new ArrayList<>();
+    private ArrayList<LocalDateTime> dates = new ArrayList<>();
     private ArrayList<String> routes = new ArrayList<>();
     private ArrayList<Integer> points = new ArrayList<>();
 
-    public ArrayList<Date> getDates() {
+    public ArrayList<LocalDateTime> getDates() {
         return dates;
     }
 
@@ -18,7 +19,7 @@ public class DrivingLog {
         return points;
     }
 
-    public void setDates(ArrayList<Date> dates) {
+    public void setDates(ArrayList<LocalDateTime> dates) {
         this.dates = dates;
     }
 

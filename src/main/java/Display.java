@@ -5,7 +5,6 @@ public class Display {
 
 	private HashMap<String, Integer> departures = new HashMap<String, Integer>();
 	private ArrayList<IDisplayListener> listeners;
-
 	public Display() {
 		listeners = new ArrayList<>();
 	}
@@ -13,11 +12,9 @@ public class Display {
 	public void addListener(IDisplayListener listener) {
 		listeners.add(listener);
 	}
-
 	public ArrayList<IDisplayListener> getListeners() {
 		return listeners;
 	}
-
 	public void removeListener(IDisplayListener listener) {
 		listeners.remove(listener);
 	}
@@ -27,15 +24,9 @@ public class Display {
 		ArrayList<IDisplayListener> found = new ArrayList<>();
 		int row;
 		int column;
-
-		System.out.println("Train to " + city + " today from Track " + track +". Source: updateDisplay, Display class");
 		System.out.println("");
-
-	//	System.out.println("Listeners size: " + listeners.size() + " Source: updatedDisplay, Display");
-
-
+		System.out.println("Train to " + city + " today from Track " + track +". Source: Display");
 		for(int i = 0 ; i < listeners.size() ; i++){
-			//Passenger (listener) will be informed through if method call
 			if(listeners.get(i).updateEvent(city,track)){
 				//save seat from passenger so lounge can empty the seat
 				row = listeners.get(i).getLoungePlace()[0];
@@ -46,13 +37,9 @@ public class Display {
 				found.add(listeners.get(i));
 			}//end if
 		}//end for
-		//System.out.println("Listeners size: " + listeners.size() + " Source: updatedDisplay, Display");
 		listeners.removeAll(found);
-		/*
-		for(int i:seatPlacesToBeRemoved){
-			System.out.println("From Dispaly: " +i);
-		}
-		 */
+		System.out.println("");
+		System.out.println("All passengers who wanted to " + city + " have been deleted in listeners. Source: Display");
 		return seatPlacesToBeRemoved;
 	}//end method
 }

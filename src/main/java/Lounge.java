@@ -1,10 +1,13 @@
+import java.time.LocalDateTime;
 import java.util.ArrayList;
+import java.util.Date;
 
 public class Lounge {
 	protected Passenger[][] passengers;
 	protected Display display;
 	protected SecurityControl securityControl;
 	private Lounge successor;
+	private LocalDateTime time;
 
 	//GETTER AND SETTERS ###############################################################################################
 	public Lounge getSuccessor() {
@@ -28,14 +31,13 @@ public class Lounge {
 
 	//METHODS #########################################################################################################
 	public Passenger assign(Passenger passenger) {
-		Passenger newPassenger = new Passenger(9999);
 		//for (int i = startValue; i < endValue; i++) {
 			if (getSuccessor() != null) {
-				newPassenger = getSuccessor().assign(passenger);
+				passenger = getSuccessor().assign(passenger);
 			} else {
 				System.out.println("Unable to find correct passenger State. Source: assign, Lounge");
 			}
-			return newPassenger;
+			return passenger;
 		//}//end for
 	}//end method
 
@@ -62,7 +64,6 @@ public class Lounge {
 	}//end method
 
 	/**
-
 	 * Adds the parameter passenger to the lounge.
 	 * Does Security check, sets Passengers lounge place and add the passenger to the DisplayListener.
 	 * @param passenger
@@ -74,10 +75,15 @@ public class Lounge {
 			for (int x = 0; x < 25; x++) {
 				for (int y = 0; y < 100; y++) {
 					if (passengers[x][y] == null) {
+						securityControl.doSecurityControl(passenger);
+						//free place found
 						tempPlaceArray[0] = x;
 						tempPlaceArray[1] = y;
 						passenger.setLoungePlace(tempPlaceArray);
-						securityControl.doSecurityControl(passenger);
+						//record Journey
+						time = LocalDateTime.now();
+						passenger.recordJourney(time);
+						//save passenger in Lounge
 						passengers[x][y] = passenger;
 						addDisplayListener(passenger);
 						return passenger; //return value here is important!
@@ -94,21 +100,20 @@ public class Lounge {
 		//System.out.println("Size of Arraylist: " + seatPlacesToBeRemoved.size());
 		//outputAllElementsOfCollection(seatPlacesToBeRemoved);
 	}
-
-	public void outputAllElementsOfCollection(ArrayList<Integer> seatPlacesToBeRemoved){
-		for(int i = 0 ; i < seatPlacesToBeRemoved.size() ; i++){
-			System.out.println(seatPlacesToBeRemoved.get(i));
-		}//end for
-	}
-
 	public void removeCollectionOfPassengers(ArrayList<Integer> seatPlacesToBeRemoved){
 		//pairs of row and column
 		//even index is a row, odd index is a column
 		for (int i = 0 ; i < seatPlacesToBeRemoved.size() ; i+=2){
 			//System.out.println("Iteration number: "+ i);
 			passengers[seatPlacesToBeRemoved.get(i)][seatPlacesToBeRemoved.get(i+1)] = null;
-			System.out.println("Passenger at seat row: " + seatPlacesToBeRemoved.get(i) + " column: " +
-					seatPlacesToBeRemoved.get(i+1) + " has been removed. Source: removeCollectionPassengers, Lounge");
 		}//end for
+		System.out.println();
+		System.out.println("The passengers who go to their train now, have been removed from the lounge. Source: Lounge");
 	}//end method
+
+	public void outputAllElementsOfCollection(ArrayList<Integer> seatPlacesToBeRemoved){
+		for(int i = 0 ; i < seatPlacesToBeRemoved.size() ; i++){
+			System.out.println(seatPlacesToBeRemoved.get(i));
+		}//end for
+	}
 }

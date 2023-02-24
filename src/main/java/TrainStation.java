@@ -9,7 +9,7 @@ public class TrainStation {
 	private Train[] trains = new Train[10];
 
 	private City trainStationCity = new City("x");
-	private Repository repository = new Repository();
+	private Repository repository;
 	private Lounge blueLounge,bronzeSilverLounge,goldPlatinLounge;
 
 	// ATTRIBUTES FOR METHODS AND LOGIC ########################################################################################
@@ -39,16 +39,9 @@ public class TrainStation {
 		goldPlatinLounge = new GoldPlatinumLounge(bronzeSilverLounge);
 
 		//Setting distances to other cities
-		distances.put("XA",125);
-		distances.put("XB",225);
-		distances.put("XC",185);
-		distances.put("XD",85);
-		distances.put("XE",85);
-		distances.put("XF",50);
-		distances.put("XG",85);
-		distances.put("XH",250);
-		distances.put("XI",115);
-		distances.put("XJ",200);
+		instantiateDistancesToOtherCities();
+
+		repository = new Repository();
 
 		//get Passengers in TrainStation
 		passengersFromRepository = repository.getPassengers();
@@ -76,8 +69,24 @@ public class TrainStation {
 		}//end for
 		assignConfiguredPassengersToTrains();
 		movePassengersSuccessivelyToLoungeAndUpdateDisplay();
-		System.out.println("Start daily business from TrainStation class completed");
+		endOfDayUpdatePassengersFromRepository();
+		System.out.println("");
+		System.out.println("Daily business completed successful. Source: TrainStation");
 	}//end method
+
+	public void endOfDayUpdatePassengersFromRepository(){
+		for(int i = 0 ; i < passengersFromRepository.length ; i++){
+			passengersFromRepository[i] = completedConfiguredPassengers.get(i);
+		}//end
+
+
+		/*
+		for(int i = 0 ; i < completedConfiguredPassengers.size() ; i++){
+			System.out.println("Size of driving log entries: " + completedConfiguredPassengers.get(i).getDrivingLog().getDates().size());
+		}
+		 */
+		completedConfiguredPassengers.removeAll(completedConfiguredPassengers);
+	}
 
 	public void movePassengersSuccessivelyToLoungeAndUpdateDisplay(){
 		//NOTE: 2nd parameter int value is only allowed to create a difference between 1st and 2nd parameter of 500
@@ -114,23 +123,19 @@ public class TrainStation {
 
 	public void moveCustomAmountOfPassengersToLounges(int startValue, int endValue){
 		for(int i = startValue ; i < endValue ; i++){
-			//using CoR
 			Passenger tempPassenger;
 			tempPassenger = goldPlatinLounge.assign(completedConfiguredPassengers.get(i));
 			completedConfiguredPassengers.set(i, tempPassenger);
-			/*
-			System.out.println("Train Passenger: " + completedConfiguredPassengers.get(i) + " Row: " + completedConfiguredPassengers.get(i).getLoungePlace()[0] +
-					" Column: "	+	completedConfiguredPassengers.get(i).getLoungePlace()[1] +
-					" Source: moveCustomAmountOfPassengersToLounges, TrainStation");
-			 */
 		}//end for
 	}//end method
 
 
 	public void tellLoungesToUpdateDisplay(String destination, String trackID){
 		blueLounge.tellDisplayToUpdate(destination, trackID);
-		//bronzeSilverLounge.tellDisplayToUpdate(destination, trackID);
-		//goldPlatinLounge.tellDisplayToUpdate(destination, trackID);
+		bronzeSilverLounge.tellDisplayToUpdate(destination, trackID);
+		goldPlatinLounge.tellDisplayToUpdate(destination, trackID);
+		System.out.println();
+		System.out.println("All Displays in every Lounge has been updated. Source: TrainStation");
 	}
 
 	public void assignConfiguredPassengersToTrains(){
@@ -138,52 +143,54 @@ public class TrainStation {
 		for(int i = 0 ; i < 500 ; i++){
 			completedConfiguredPassengers.get(i).setDestination("XA");
 		}//end for
-		System.out.println("XA train has 500 passengers assigned");
+		//System.out.println("XA train has 500 passengers assigned");
 		//XB
 		for(int i = 500 ; i < 1000 ; i++){
 			completedConfiguredPassengers.get(i).setDestination("XB");
 		}//end for
-		System.out.println("XB has 500 passengers assigned");
+		//System.out.println("XB has 500 passengers assigned");
 		//XC
 		for(int i = 1000 ; i < 1500 ; i++){
 			completedConfiguredPassengers.get(i).setDestination("XC");
 		}//end for
-		System.out.println("XC has 500 passengers assigned");
+		//System.out.println("XC has 500 passengers assigned");
 		//XD
 		for(int i = 1500 ; i < 2000 ; i++){
 			completedConfiguredPassengers.get(i).setDestination("XD");
 		}//end for
-		System.out.println("XD has 500 passengers assigned");
+//		System.out.println("XD has 500 passengers assigned");
 		//XE
 		for(int i = 2000 ; i < 2500 ; i++){
 			completedConfiguredPassengers.get(i).setDestination("XE");
 		}//end for
-		System.out.println("XE has 500 passengers assigned");
+//		System.out.println("XE has 500 passengers assigned");
 		//XF
 		for(int i = 2500 ; i < 3000 ; i++){
 			completedConfiguredPassengers.get(i).setDestination("XF");
 		}//end for
-		System.out.println("XF has 500 passengers assigned");
+//		System.out.println("XF has 500 passengers assigned");
 		//XG
 		for(int i = 3000 ; i < 3500 ; i++){
 			completedConfiguredPassengers.get(i).setDestination("XG");
 		}//end for
-		System.out.println("XG has 500 passengers assigned");
+//		System.out.println("XG has 500 passengers assigned");
 		//XH
 		for(int i = 3500 ; i < 4000 ; i++){
 			completedConfiguredPassengers.get(i).setDestination("XH");
 		}//end for
-		System.out.println("XH has 500 passengers assigned");
+//		System.out.println("XH has 500 passengers assigned");
 		//XI
 		for(int i = 4000 ; i < 4500 ; i++){
 			completedConfiguredPassengers.get(i).setDestination("XI");
 		}//end for
-		System.out.println("XI has 500 passengers assigned");
+//		System.out.println("XI has 500 passengers assigned");
 		//XJ
 		for(int i = 4500 ; i < 5000 ; i++){
 			completedConfiguredPassengers.get(i).setDestination("XJ");
 		}//end for
-		System.out.println("XJ has 500 passengers assigned");
+//		System.out.println("XJ has 500 passengers assigned");
+		System.out.println("");
+		System.out.println("All 5000 passengers have been assigned to their trains. Source: TrainStation");
 	}
 
 
@@ -225,6 +232,20 @@ public class TrainStation {
 		}//end for
 		return true;
 	}//end method
+
+	public void instantiateDistancesToOtherCities(){
+		distances.put("XA",125);
+		distances.put("XB",225);
+		distances.put("XC",185);
+		distances.put("XD",85);
+		distances.put("XE",85);
+		distances.put("XF",50);
+		distances.put("XG",85);
+		distances.put("XH",250);
+		distances.put("XI",115);
+		distances.put("XJ",200);
+	}
+
 
 	public void outputCompletedConfiguredPassengers(){
 		for(Passenger passenger: completedConfiguredPassengers){
