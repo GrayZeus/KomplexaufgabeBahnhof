@@ -24,10 +24,6 @@ public class Lounge {
         this.successor = successor;
     }
 
-    public Display getDisplay() {
-        return display;
-    }
-
     //METHODS #########################################################################################################
     public Passenger assign(Passenger passenger) {
         //for (int i = startValue; i < endValue; i++) {

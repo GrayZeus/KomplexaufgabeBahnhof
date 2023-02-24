@@ -47,16 +47,6 @@ public class TrainStation {
         passengersFromRepository = repository.getPassengers();
     }//end constructor
 
-
-    //GETTER METHODS ##############################################################################################################
-    public Lounge getBlueLounge() {
-        return blueLounge;
-    }
-
-    public ArrayList<Passenger> getCompletedConfiguredPassengers() {
-        return completedConfiguredPassengers;
-    }
-
     // CLASS METHODS/ LOGIC METHODS ###############################################################################################
 
     public void startDailyBusiness() {

@@ -1,5 +1,4 @@
 import java.util.ArrayList;
-import java.util.HashMap;
 
 public class Display {
     private ArrayList<IDisplayListener> listeners;
@@ -10,14 +9,6 @@ public class Display {
 
     public void addListener(IDisplayListener listener) {
         listeners.add(listener);
-    }
-
-    public ArrayList<IDisplayListener> getListeners() {
-        return listeners;
-    }
-
-    public void removeListener(IDisplayListener listener) {
-        listeners.remove(listener);
     }
 
     public ArrayList<Integer> updatedDisplay(String city, String track) {

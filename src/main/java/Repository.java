@@ -12,7 +12,4 @@ public class Repository {
         return passengers;
     }
 
-    public void setPassengers(Passenger[] passengers) {
-        this.passengers = passengers;
-    }
 }

@@ -27,11 +27,6 @@ public class Passenger implements IDisplayListener {
 
     //GETTER AND SETTER METHODS #############################################################################################
 
-
-    public boolean isDoneSecurityCheck() {
-        return doneSecurityCheck;
-    }
-
     public void setDoneSecurityCheck(boolean doneSecurityCheck) {
         this.doneSecurityCheck = doneSecurityCheck;
     }
@@ -42,10 +37,6 @@ public class Passenger implements IDisplayListener {
 
     public void setLoungePlace(int[] loungePlace) {
         this.loungePlace = loungePlace;
-    }
-
-    public String getDestination() {
-        return destination;
     }
 
     public void setDestination(String destination) {
@@ -60,16 +51,6 @@ public class Passenger implements IDisplayListener {
         this.state = state;
     }
 
-    public int getId() {
-        return id;
-    }
-    public DrivingLog getDrivingLog() {
-        return drivingLog;
-    }
-
-    public TravelClass getTravelClass() {
-        return travelClass;
-    }
     public void setTravelClass(TravelClass travelClass) {
         this.travelClass = travelClass;
     }
