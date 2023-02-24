@@ -16,7 +16,7 @@ public class Passenger implements IDisplayListener {
     private int[] loungePlace = new int[2];
     private HashMap<String, Integer> distances = new HashMap<>();
 
-    //GETTER AND SETTER METHODS #############################################################################################
+    //CONSTRUCTOR #############################################################################################
 
     public Passenger(int id) {
         //initial state for all Passengers
@@ -24,6 +24,9 @@ public class Passenger implements IDisplayListener {
         this.id = id;
         instantiateDistancesToOtherCities();
     }
+
+    //GETTER AND SETTER METHODS #############################################################################################
+
 
     public boolean isDoneSecurityCheck() {
         return doneSecurityCheck;
@@ -60,11 +63,15 @@ public class Passenger implements IDisplayListener {
     public int getId() {
         return id;
     }
-
-    //CONSTRUCTOR ########################################################################################################
-
     public DrivingLog getDrivingLog() {
         return drivingLog;
+    }
+
+    public TravelClass getTravelClass() {
+        return travelClass;
+    }
+    public void setTravelClass(TravelClass travelClass) {
+        this.travelClass = travelClass;
     }
 
     //METHODS ########################################################################################################
@@ -72,15 +79,6 @@ public class Passenger implements IDisplayListener {
     public void promote() {
         state.promote(this);
     }
-
-    public TravelClass getTravelClass() {
-        return travelClass;
-    }
-
-    public void setTravelClass(TravelClass travelClass) {
-        this.travelClass = travelClass;
-    }
-
 
     /**
      * Observer pattern method. Passenger is a listener, listener will be informed if this method is called.
@@ -103,14 +101,6 @@ public class Passenger implements IDisplayListener {
         return false;
     }
 
-    public int getPointsFromDrivingLog() {
-        ArrayList<Integer> tempPoints = drivingLog.getPoints();
-        int returnValue = 0;
-        for (int point : tempPoints) {
-            returnValue += point;
-        }//end for
-        return returnValue;
-    }//end method
 
     public void recordJourney(LocalDateTime dateTime) {
         //get ArrayLists
@@ -128,6 +118,12 @@ public class Passenger implements IDisplayListener {
         drivingLog.setPoints(passengerPoints);
         //update state
         preconditionNewStateThenPromote();
+    }//end method
+
+
+    public int getPointsFromDrivingLog() {
+        int points = drivingLog.sumAllPoints();
+        return points;
     }//end method
 
 
@@ -213,6 +209,5 @@ public class Passenger implements IDisplayListener {
         distances.put("XI", 115);
         distances.put("XJ", 200);
     }
-
 
 }//end passenger class

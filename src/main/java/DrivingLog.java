@@ -29,6 +29,25 @@ public class DrivingLog {
     public void setPoints(ArrayList<Integer> points) {
         this.points = points;
     }
+
+
+    public int sumAllPoints(){
+        int returnValue = 0;
+        for (int point : points) {
+            returnValue += point;
+        }//end for
+        return returnValue;
+    }
+
+
+
+
+
+
+
+
+
+
 }
 
 

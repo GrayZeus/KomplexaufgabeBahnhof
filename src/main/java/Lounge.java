@@ -112,9 +112,4 @@ public class Lounge {
 //		System.out.println("The passengers who go to their train now, have been removed from the lounge. Source: Lounge");
     }//end method
 
-    public void outputAllElementsOfCollection(ArrayList<Integer> seatPlacesToBeRemoved) {
-        for (int i = 0; i < seatPlacesToBeRemoved.size(); i++) {
-            System.out.println(seatPlacesToBeRemoved.get(i));
-        }//end for
-    }
 }

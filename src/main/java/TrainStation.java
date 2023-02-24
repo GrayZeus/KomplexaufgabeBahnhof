@@ -82,8 +82,8 @@ public class TrainStation {
         for (int i = 0; i < passengersFromRepository.length; i++) {
             passengersFromRepository[i] = completedConfiguredPassengers.get(i);
         }//end
-/*
 
+/*
 		for(int i = 0 ; i < completedConfiguredPassengers.size() ; i++){
 			System.out.println("Passengers FTP State: " + completedConfiguredPassengers.get(i).getState().getClass().toString());
 		}
@@ -256,18 +256,6 @@ public class TrainStation {
         System.out.println("#####################################################################################");
         System.out.println();
         System.out.println();
-    }
-
-    public void outputCompletedConfiguredPassengers() {
-        for (Passenger passenger : completedConfiguredPassengers) {
-            System.out.println(passenger.getId());
-        }
-    }
-
-    public void outputChosenPassengers() {
-        for (Passenger passenger : chosenPassengers) {
-            System.out.println(passenger.getId());
-        }
     }
 
 }

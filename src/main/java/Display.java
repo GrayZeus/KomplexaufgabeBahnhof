@@ -2,8 +2,6 @@ import java.util.ArrayList;
 import java.util.HashMap;
 
 public class Display {
-
-    private HashMap<String, Integer> departures = new HashMap<String, Integer>();
     private ArrayList<IDisplayListener> listeners;
 
     public Display() {
