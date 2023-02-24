@@ -1,5 +1,5 @@
 public interface IFTPState {
 
-	void promote(Passenger passenger);
+    void promote(Passenger passenger);
 
 }

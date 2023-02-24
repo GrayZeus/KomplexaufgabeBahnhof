@@ -1,3 +1,3 @@
 public enum TravelClass {
-    FIRST,BUSINESS,ECONOMY;
+    FIRST, BUSINESS, ECONOMY;
 }
