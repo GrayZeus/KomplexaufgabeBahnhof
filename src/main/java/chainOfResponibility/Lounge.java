@@ -35,6 +35,10 @@ public class Lounge {
         return display;
     }
 
+    public Passenger[][] getPassengers() {
+        return passengers;
+    }
+
     //METHODS #########################################################################################################
     public Passenger assign(Passenger passenger) {
         //for (int i = startValue; i < endValue; i++) {
@@ -48,7 +52,7 @@ public class Lounge {
     }//end method
 
     public boolean canHandlePassenger(Passenger passenger, String passengerType) {
-       // System.out.println("canHandlePassenger method from class ChainOfResponibility.Lounge: " + passenger.getState().toString().substring(0,10));
+        // System.out.println("canHandlePassenger method from class ChainOfResponibility.Lounge: " + passenger.getState().toString().substring(0,10));
         return (passenger == null) || (passenger.getState().toString().substring(0, 10).equals(passengerType));
     }
 

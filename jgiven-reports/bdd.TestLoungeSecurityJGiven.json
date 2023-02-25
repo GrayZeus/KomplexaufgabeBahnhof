@@ -1,0 +1,145 @@
+{
+  "className": "bdd.TestLoungeSecurityJGiven",
+  "name": "Test Lounge Security J Given",
+  "scenarios": [
+    {
+      "className": "bdd.TestLoungeSecurityJGiven",
+      "testMethodName": "assignBluePassenger",
+      "description": "Assign blue passenger",
+      "tagIds": [],
+      "explicitParameters": [],
+      "derivedParameters": [],
+      "scenarioCases": [
+        {
+          "caseNr": 1,
+          "steps": [
+            {
+              "name": "get initialized gold platin lounge and blue passenger",
+              "words": [
+                {
+                  "value": "Given",
+                  "isIntroWord": true
+                },
+                {
+                  "value": "get initialized gold platin lounge and blue passenger"
+                }
+              ],
+              "status": "PASSED",
+              "durationInNanos": 7987300,
+              "depth": 0,
+              "parentFailed": false
+            },
+            {
+              "name": "assign passenger",
+              "words": [
+                {
+                  "value": "When",
+                  "isIntroWord": true
+                },
+                {
+                  "value": "assign passenger"
+                }
+              ],
+              "status": "PASSED",
+              "durationInNanos": 1818900,
+              "depth": 0,
+              "parentFailed": false
+            },
+            {
+              "name": "assert gold platin lounge contains no passenger",
+              "words": [
+                {
+                  "value": "Then",
+                  "isIntroWord": true
+                },
+                {
+                  "value": "assert gold platin lounge contains no passenger"
+                }
+              ],
+              "status": "PASSED",
+              "durationInNanos": 2590100,
+              "depth": 0,
+              "parentFailed": false
+            }
+          ],
+          "explicitArguments": [],
+          "derivedArguments": [],
+          "status": "SUCCESS",
+          "durationInNanos": 39741600
+        }
+      ],
+      "casesAsTable": false,
+      "durationInNanos": 39741600
+    },
+    {
+      "className": "bdd.TestLoungeSecurityJGiven",
+      "testMethodName": "assignPlatinPassenger",
+      "description": "Assign platin passenger",
+      "tagIds": [],
+      "explicitParameters": [],
+      "derivedParameters": [],
+      "scenarioCases": [
+        {
+          "caseNr": 1,
+          "steps": [
+            {
+              "name": "get initialized gold platin lounge and platin passenger",
+              "words": [
+                {
+                  "value": "Given",
+                  "isIntroWord": true
+                },
+                {
+                  "value": "get initialized gold platin lounge and platin passenger"
+                }
+              ],
+              "status": "PASSED",
+              "durationInNanos": 1374300,
+              "depth": 0,
+              "parentFailed": false
+            },
+            {
+              "name": "assign passenger",
+              "words": [
+                {
+                  "value": "When",
+                  "isIntroWord": true
+                },
+                {
+                  "value": "assign passenger"
+                }
+              ],
+              "status": "PASSED",
+              "durationInNanos": 11420400,
+              "depth": 0,
+              "parentFailed": false
+            },
+            {
+              "name": "assert gold platin lounge contains passenger",
+              "words": [
+                {
+                  "value": "Then",
+                  "isIntroWord": true
+                },
+                {
+                  "value": "assert gold platin lounge contains passenger"
+                }
+              ],
+              "status": "PASSED",
+              "durationInNanos": 548500,
+              "depth": 0,
+              "parentFailed": false
+            }
+          ],
+          "explicitArguments": [],
+          "derivedArguments": [],
+          "status": "SUCCESS",
+          "durationInNanos": 14083700
+        }
+      ],
+      "casesAsTable": false,
+      "durationInNanos": 14083700
+    }
+  ],
+  "tagMap": {}
+}

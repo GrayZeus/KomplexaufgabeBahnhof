@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite name="bdd.TestLoungeSecurityJGiven" tests="2" skipped="0" failures="0" errors="0" timestamp="2023-02-25T14:18:08" hostname="MAGGO" time="0.592">
+  <properties/>
+  <testcase name="assignBluePassenger()" classname="bdd.TestLoungeSecurityJGiven" time="0.576"/>
+  <testcase name="assignPlatinPassenger()" classname="bdd.TestLoungeSecurityJGiven" time="0.015"/>
+  <system-out><![CDATA[Unable to find correct passenger State. Source: assign, ChainOfResponibility.Lounge
+
+Test Class: bdd.TestLoungeSecurityJGiven
+
+ Assign blue passenger
+
+   Given get initialized gold platin lounge and blue passenger
+    When assign passenger
+    Then assert gold platin lounge contains no passenger
+
+
+ Assign platin passenger
+
+   Given get initialized gold platin lounge and platin passenger
+    When assign passenger
+    Then assert gold platin lounge contains passenger
+
+]]></system-out>
+  <system-err><![CDATA[]]></system-err>
+</testsuite>
