@@ -1,5 +1,10 @@
 package chainOfResponibility;
 
+import classesToMoreThanOnePattern.Passenger;
+import observer.Display;
+import observer.IDisplayListener;
+import task_classes.SecurityControl;
+
 import java.time.LocalDateTime;
 import java.util.ArrayList;
 
@@ -39,8 +44,8 @@ public class Lounge {
     }//end method
 
     public boolean canHandlePassenger(Passenger passenger, String passengerType) {
-        //System.out.println("canHandlePassenger method from class ChainOfResponibility.Lounge: " + passenger.getState().toString().substring(0,4));
-        return (passenger == null) || (passenger.getState().toString().substring(0, 4).equals(passengerType));
+       // System.out.println("canHandlePassenger method from class ChainOfResponibility.Lounge: " + passenger.getState().toString().substring(0,10));
+        return (passenger == null) || (passenger.getState().toString().substring(0, 10).equals(passengerType));
     }
 
     public void addDisplayListener(IDisplayListener listener) {

@@ -1,5 +1,7 @@
 package state;
 
+import classesToMoreThanOnePattern.Passenger;
+
 public class Gold implements IFTPState {
 
     @Override

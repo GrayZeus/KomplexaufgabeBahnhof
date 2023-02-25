@@ -80,7 +80,6 @@ public class TrainStation {
         for (int i = 0; i < passengersFromRepository.length; i++) {
             passengersFromRepository[i] = completedConfiguredPassengers.get(i);
         }//end
-
 /*
 		for(int i = 0 ; i < completedConfiguredPassengers.size() ; i++){
 			System.out.println("Passengers FTP State: " + completedConfiguredPassengers.get(i).getState().getClass().toString());

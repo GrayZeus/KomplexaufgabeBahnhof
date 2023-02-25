@@ -1,13 +1,15 @@
 package chainOfResponibility;
 
+import classesToMoreThanOnePattern.Passenger;
+
 public class GoldPlatinumLounge extends Lounge {
     public GoldPlatinumLounge(Lounge successor) {
         setSuccessor(successor);
     }
 
     public Passenger assign(Passenger passenger) {
-        if (canHandlePassenger(passenger, "state.Gold") || canHandlePassenger(passenger, "Plat")) {
-            //only first 4 chars possible
+        if (canHandlePassenger(passenger, "state.Gold") || canHandlePassenger(passenger, "state.Plat")) {
+            //only first 10 chars possible
 //			System.out.println("ClassesToMoreThanOnePattern.Passenger matches to GoldPlatinum ChainOfResponibility.Lounge. Source: assign, ChainOfResponibility.GoldPlatinumLounge");
             if (!isLoungeFull()) {
 //				System.out.println("ChainOfResponibility.Lounge isn't full, passenger will be added");

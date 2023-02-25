@@ -1,6 +1,6 @@
 package state;
 
-import state.IFTPState;
+import classesToMoreThanOnePattern.Passenger;
 
 public class Platinum implements IFTPState {
 

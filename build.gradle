@@ -2,18 +2,35 @@ plugins {
     id 'java'
 }
 
-group 'org.example'
-version '1.0-SNAPSHOT'
+group 'dhbw'
+version null
 
 repositories {
     mavenCentral()
 }
 
 dependencies {
-    testImplementation 'org.junit.jupiter:junit-jupiter-api:5.8.1'
-    testRuntimeOnly 'org.junit.jupiter:junit-jupiter-engine:5.8.1'
+    implementation group: 'com.tngtech.jgiven', name: 'jgiven-core', version: '1.2.4'
+    implementation group: 'com.tngtech.jgiven', name: 'jgiven-junit5', version: '1.2.4'
+    testImplementation group: 'org.slf4j', name: 'slf4j-simple', version: '2.0.6'
+    testImplementation 'org.junit.jupiter:junit-jupiter-api:5.9.2'
+    testImplementation group: 'org.assertj', name: 'assertj-core', version: '3.24.2'
+    testRuntimeOnly 'org.junit.jupiter:junit-jupiter-engine:5.9.2'
 }
 
 test {
     useJUnitPlatform()
+    failFast = true
+    testLogging {
+        events 'PASSED', 'FAILED', 'SKIPPED'
+    }
+    afterSuite { desc, result ->
+        if (!desc.parent) {
+            println "\nTest result: ${result.resultType}"
+            println "Test summary: ${result.testCount} tests completed, " +
+                    "${result.successfulTestCount} succeeded, " +
+                    "${result.failedTestCount} failed, " +
+                    "${result.skippedTestCount} skipped"
+        }
+    }
 }

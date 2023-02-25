@@ -3,6 +3,8 @@ package classesToMoreThanOnePattern;
 import observer.IDisplayListener;
 import state.Blue;
 import state.IFTPState;
+import task_classes.DrivingLog;
+import task_classes.TravelClass;
 
 import java.time.LocalDateTime;
 import java.util.ArrayList;
