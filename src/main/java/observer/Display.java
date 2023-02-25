@@ -5,6 +5,10 @@ import java.util.ArrayList;
 public class Display {
     private ArrayList<IDisplayListener> listeners;
 
+    public ArrayList<IDisplayListener> getListeners() {
+        return listeners;
+    }
+
     public Display() {
         listeners = new ArrayList<>();
     }
