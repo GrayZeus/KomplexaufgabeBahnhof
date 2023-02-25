@@ -1,3 +1,5 @@
+package observer;
+
 import java.util.ArrayList;
 
 public class Display {
@@ -17,7 +19,7 @@ public class Display {
         int row;
         int column;
 //		System.out.println("");
-//		System.out.println("Train to " + city + " today from Track " + track +". Source: Display");
+//		System.out.println("task_classes.Train to " + city + " today from task_classes.Track " + track +". Source: observer.Display");
         for (int i = 0; i < listeners.size(); i++) {
             if (listeners.get(i).updateEvent(city, track)) {
                 //save seat from passenger so lounge can empty the seat
@@ -31,7 +33,7 @@ public class Display {
         }//end for
         listeners.removeAll(found);
 //		System.out.println("");
-//		System.out.println("All passengers who wanted to " + city + " have been deleted in listeners. Source: Display");
+//		System.out.println("All passengers who wanted to " + city + " have been deleted in listeners. Source: observer.Display");
         return seatPlacesToBeRemoved;
     }//end method
 }

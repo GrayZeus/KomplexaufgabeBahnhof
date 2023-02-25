@@ -1,3 +1,9 @@
+package classesToMoreThanOnePattern;
+
+import observer.IDisplayListener;
+import state.Blue;
+import state.IFTPState;
+
 import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -62,7 +68,7 @@ public class Passenger implements IDisplayListener {
     }
 
     /**
-     * Observer pattern method. Passenger is a listener, listener will be informed if this method is called.
+     * Observer pattern method. ClassesToMoreThanOnePattern.Passenger is a listener, listener will be informed if this method is called.
      * If the destination city of the passenger matches to the city on the display, true will be returned.
      *
      * @param city
@@ -72,12 +78,12 @@ public class Passenger implements IDisplayListener {
 
     @Override
     public boolean updateEvent(String city, String track) {
-        //System.out.println("Updated event on Lounge Display.Source: updateEvent, Passenger class");
+        //System.out.println("Updated event on ChainOfResponibility.Lounge observer.Display.Source: updateEvent, ClassesToMoreThanOnePattern.Passenger class");
         if (destination.equals(city)) {
-            //System.out.println("Display content matches destination of Passenger");
+            //System.out.println("observer.Display content matches destination of ClassesToMoreThanOnePattern.Passenger");
             return true;
         }
-        System.out.println("Passenger don't wan't to city: " + city + " he wants to: " + destination + ".");
+        System.out.println("ClassesToMoreThanOnePattern.Passenger don't wan't to city: " + city + " he wants to: " + destination + ".");
 //		System.out.println("");
         return false;
     }
@@ -125,7 +131,7 @@ public class Passenger implements IDisplayListener {
                 }
                 break;
             default:
-                System.out.println("Something ain't right. Source: evaluatePointAmount, Passenger ");
+                System.out.println("Something ain't right. Source: evaluatePointAmount, ClassesToMoreThanOnePattern.Passenger ");
         }
         return points;
     }
@@ -134,7 +140,7 @@ public class Passenger implements IDisplayListener {
         int extraPoints = 0;
         if (drivingLog.getDates().size() % 10 == 0) {
             extraPoints = distance * 3;
-//			System.out.println("YAYYYY that's your 10th drive! Source everyTenThRouteDriven, Passenger");
+//			System.out.println("YAYYYY that's your 10th drive! Source everyTenThRouteDriven, ClassesToMoreThanOnePattern.Passenger");
             return extraPoints;
         }//end if
         return extraPoints;
@@ -147,12 +153,12 @@ public class Passenger implements IDisplayListener {
         String actualState = state.getClass().toString();
         String futureState = evaluateFTPState();
         if (actualState.equals("class " + futureState)) {
-            //Passenger stays in his state
-            //System.out.println("Passenger stays in his state. Source: Passenger");
+            //ClassesToMoreThanOnePattern.Passenger stays in his state
+            //System.out.println("ClassesToMoreThanOnePattern.Passenger stays in his state. Source: ClassesToMoreThanOnePattern.Passenger");
             return false;
         } else {
             promote();
-//			System.out.println("Congrats " + this + " passengers FTP State has been promoted. Source: preconditionNewStateThenPromote, Passenger ");
+//			System.out.println("Congrats " + this + " passengers FTP State has been promoted. Source: preconditionNewStateThenPromote, ClassesToMoreThanOnePattern.Passenger ");
             return true;
         }
     }//end method
@@ -161,20 +167,20 @@ public class Passenger implements IDisplayListener {
     public String evaluateFTPState() {
         int points = getPointsFromDrivingLog();
         if (points <= 1999) {
-            //stays Blue
-            return "Blue";
+            //stays state.Blue
+            return "state.Blue";
         } else if (points >= 2000 && points <= 4249) {
-            //Bronze state
-            return "Bronze";
+            //state.Bronze state
+            return "state.Bronze";
         } else if (points >= 4250 && points <= 6499) {
-            //Silver state
-            return "Silver";
+            //state.Silver state
+            return "state.Silver";
         } else if (points >= 6500 && points <= 11499) {
-            //Gold state
-            return "Gold";
+            //state.Gold state
+            return "state.Gold";
         } else {
-            //points over 11500, Platinum state
-            return "Platinum";
+            //points over 11500, state.Platinum state
+            return "state.Platinum";
         }
     }
 

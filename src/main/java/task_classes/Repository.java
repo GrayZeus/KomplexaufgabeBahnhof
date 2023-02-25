@@ -1,3 +1,7 @@
+package task_classes;
+
+import classesToMoreThanOnePattern.Passenger;
+
 public class Repository {
     private Passenger[] passengers = new Passenger[5000];
 

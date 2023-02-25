@@ -1,3 +1,11 @@
+package task_classes;
+
+import chainOfResponibility.BlueLounge;
+import chainOfResponibility.BronzeSilverLounge;
+import chainOfResponibility.GoldPlatinumLounge;
+import chainOfResponibility.Lounge;
+import classesToMoreThanOnePattern.Passenger;
+
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Random;
@@ -43,14 +51,14 @@ public class TrainStation {
 
         repository = new Repository();
 
-        //get Passengers in TrainStation
+        //get Passengers in task_classes.TrainStation
         passengersFromRepository = repository.getPassengers();
     }//end constructor
 
     // CLASS METHODS/ LOGIC METHODS ###############################################################################################
 
     public void startDailyBusiness() {
-        System.out.println("Determine random passengers. Source: TrainStation");
+        System.out.println("Determine random passengers. Source: task_classes.TrainStation");
         for (int i = 0; i < 10; i++) {
             chooseRandomPassengers();
             configureChosenPassengersTravelClass();
@@ -60,12 +68,12 @@ public class TrainStation {
             clearChosenPassengers();
         }//end for
         assignConfiguredPassengersToTrains();
-        System.out.println("All 5000 passengers have been assigned to their trains. Source: TrainStation");
+        System.out.println("All 5000 passengers have been assigned to their trains. Source: task_classes.TrainStation");
         movePassengersSuccessivelyToLoungeAndUpdateDisplay();
-        System.out.println("All 5000 passengers have been in their lounge and have driven their train. Source: TrainStation");
+        System.out.println("All 5000 passengers have been in their lounge and have driven their train. Source: task_classes.TrainStation");
         endOfDayUpdatePassengersFromRepository();
-        System.out.println("End of the day, resetting TrainStation for the next day. Source: TrainStation");
-        System.out.println("Daily business completed successful. Source: TrainStation");
+        System.out.println("End of the day, resetting task_classes.TrainStation for the next day. Source: task_classes.TrainStation");
+        System.out.println("Daily business completed successful. Source: task_classes.TrainStation");
     }//end method
 
     public void endOfDayUpdatePassengersFromRepository() {
@@ -128,7 +136,7 @@ public class TrainStation {
         bronzeSilverLounge.tellDisplayToUpdate(destination, trackID);
         goldPlatinLounge.tellDisplayToUpdate(destination, trackID);
 //		System.out.println();
-//		System.out.println("All Displays in every Lounge has been updated. Source: TrainStation");
+//		System.out.println("All Displays in every ChainOfResponibility.Lounge has been updated. Source: task_classes.TrainStation");
     }
 
     public void assignConfiguredPassengersToTrains() {

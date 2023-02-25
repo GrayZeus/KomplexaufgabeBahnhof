@@ -1,3 +1,5 @@
+package chainOfResponibility;
+
 import java.time.LocalDateTime;
 import java.util.ArrayList;
 
@@ -30,14 +32,14 @@ public class Lounge {
         if (getSuccessor() != null) {
             passenger = getSuccessor().assign(passenger);
         } else {
-            System.out.println("Unable to find correct passenger State. Source: assign, Lounge");
+            System.out.println("Unable to find correct passenger State. Source: assign, ChainOfResponibility.Lounge");
         }
         return passenger;
         //}//end for
     }//end method
 
     public boolean canHandlePassenger(Passenger passenger, String passengerType) {
-        //System.out.println("canHandlePassenger method from class Lounge: " + passenger.getState().toString().substring(0,4));
+        //System.out.println("canHandlePassenger method from class ChainOfResponibility.Lounge: " + passenger.getState().toString().substring(0,4));
         return (passenger == null) || (passenger.getState().toString().substring(0, 4).equals(passengerType));
     }
 
@@ -49,7 +51,7 @@ public class Lounge {
         for (int a = 0; a < 25; a++) {
             for (int y = 0; y < 100; y++) {
                 if (passengers[a][y] == null) {
-                    //Lounge is not empty
+                    //ChainOfResponibility.Lounge is not empty
                     return false;
                 }//end if
             }//end 2 for
@@ -79,7 +81,7 @@ public class Lounge {
                         //record Journey
                         time = LocalDateTime.now();
                         passenger.recordJourney(time);
-                        //save passenger in Lounge
+                        //save passenger in ChainOfResponibility.Lounge
                         passengers[x][y] = passenger;
                         addDisplayListener(passenger);
                         return passenger; //return value here is important!
@@ -105,7 +107,7 @@ public class Lounge {
             passengers[seatPlacesToBeRemoved.get(i)][seatPlacesToBeRemoved.get(i + 1)] = null;
         }//end for
 //		System.out.println();
-//		System.out.println("The passengers who go to their train now, have been removed from the lounge. Source: Lounge");
+//		System.out.println("The passengers who go to their train now, have been removed from the lounge. Source: ChainOfResponibility.Lounge");
     }//end method
 
 }
